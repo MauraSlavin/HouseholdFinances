@@ -28,6 +28,8 @@ App for managing household finances.  Track transactions, verify balances, see t
 # SQL database
 Required field is indicated by *.
 
+![SQL db Diagram](SQLdbDiagram.png "SQL db Diagram")
+
 ## Transactions
 1. ID*
 2. Account*: string - nickname for the account (i.e. "Household checking")
