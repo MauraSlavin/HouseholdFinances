@@ -1,9 +1,12 @@
 import React, { useState } from "react";
-import { BrowserROuter as Router, Route } from "react-router-dom";
-import Account from "./Account";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 
+import "./Home.css";
+
+import Account from "./Account";
 import accounts from "./accounts.json";
+
 const acctIcons = [
     require('./images/CheckingAcctImage.jpg'),
     require('./images/BigBillsImage.jpg'),
