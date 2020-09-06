@@ -1,0 +1,38 @@
+[
+    {
+        "nickName":"Household Checking",
+        "image":"./images/CheckingAcctImage.jpg",
+        "alt":"Household checking image"
+    },
+
+    {
+        "nickName":"Big Bills Account",
+        "image":"./images/BigBillsImage.jpg",
+        "alt":"Big bills account image"
+    },
+
+    {
+        "nickName":"Credit Card",
+        "image":"./images/DiscCCImage.jpg",
+        "alt":"Credit card image"
+    },
+
+    {
+        "nickName":"Backup Credit Card",
+        "image":"./images/BackupCCImage.jpg",
+        "alt":"Backup credit card image"
+    },
+
+    {
+        "nickName":"Mike's Spending",
+        "image":"./images/MikeSpendingImage.jpg",
+        "alt":"Mike spending image"
+    },
+
+    {
+        "nickName":"Maura's Spending",
+        "image":"./images/MauraSpendingImage.jpg",
+        "alt":"Maura spending image"
+    }
+
+]
