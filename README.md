@@ -28,11 +28,16 @@ App for managing household finances.  Track transactions, verify balances, see t
 # SQL database
 Required field is indicated by *.
 
-![SQL db Diagram](SQLdbDiagram.png "SQL db Diagram")
+![SQL db Diagram](documentation/SQLdbDiagram.png "SQL db Diagram")
+
+## Accounts Table
+1. ID*
+2. Account*: string - nickname for the account (i.e. "Household checking")
+3. TransDate*: datetime - date of the transaction initiated
 
 ## Transactions Table
 1. ID*
-2. Account*: string - nickname for the account (i.e. "Household checking")
+2. AccountID*: - ID of the account in the Accounts table
 3. TransDate*: datetime - date of the transaction initiated
 4. PostDate: datetime   - date the transaction posted/cleared; default TransDate
 5. Amount*: float (2 decimal places) - amount of the transaction
@@ -43,7 +48,7 @@ Required field is indicated by *.
 
 ## Splits Table
 1. ID*
-2. TransactionID*: link to transaction in Transactions table
+2. TransactionID*: ID of transaction in Transactions table
 3. Amount*: float (2 decimal places) - amount of this portion of the transaction
 4. Category*: what category this portion of the transaction belongs to
 
@@ -51,7 +56,7 @@ NOTE: The total of the Amounts for all the entries of a given TransactionID shou
 
 ## Buckets Table
 1. ID*
-2. TransactionID*: link to transaction in the Transactions table
+2. TransactionID*: ID of transaction in the Transactions table
 3. Amount*: float (2 decimal places) - amount to/from this bucket
 4. Bucket*: string - name of the bucket (i.e. "Property Taxes")
 
@@ -77,7 +82,7 @@ NOTE:  One transaction from the Transactions table could have multiple entries i
 # Front end design
 
 Draft of home page:
-![Home page](HomePageDraft.png "Draft of Home Page")
+![Home page](documentation/HomePageDraft.png "Draft of Home Page")
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
