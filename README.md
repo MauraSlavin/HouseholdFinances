@@ -82,8 +82,18 @@ NOTE:  One transaction from the Transactions table could have multiple entries i
 # Front end design
 
 Draft of home page:
-![Home page](documentation/HomePageDraft.png "Draft of Home Page")
+![Home page](documentation/HomePageDesign.png "Design of Home Page")
 
+Clicking on "Home" will bring you to this page.
+
+Clicking on "Assets" will bring you to the Assets page and associated functions.
+
+Clicking on "Spending" will bring you to the Spending page and associated functions.
+
+Clicking on "Budget" will bring you to the Budget page and associated functions.
+
+Clicking on any of the accounts on the Home page will bring you to the corresponding Account Page.  Here is an example of that:
+![Account page](documentation/AccountPage.png "Design of the Account Page")
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
