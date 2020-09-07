@@ -93,7 +93,7 @@ Clicking on "Spending" will bring you to the Spending page and associated functi
 Clicking on "Budget" will bring you to the Budget page and associated functions.
 
 Clicking on any of the accounts on the Home page will bring you to the corresponding Account Page.  Here is an example of that:
-![Account page](documentation/AccountPage.png "Design of the Account Page")
+![Account page](documentation/AccountPageDesign.png "Design of the Account Page")
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
