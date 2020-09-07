@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 function NavTabs() {
     return(
         <container fluid>
-            <ul className="nav nav-tabs">
+            <ul className="nav nav-tabs m-2">
                 <li className = "nav-item m-1">
                     <Link
                         to="/home"
