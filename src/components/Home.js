@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 
-import "./Home.css";
+import "./home.css";
 
 import Account from "./Account";
 import accounts from "./accounts.json";
@@ -31,6 +31,8 @@ function Home() {
                             nickName={account.nickName}
                             image={acctIcons[index]}
                             alt={account.alt}
+                            registerBalance={account.registerBalance}
+                            clearedBalance={account.clearedBalance}
                         />
                     ))}
                 </div>

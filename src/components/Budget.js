@@ -2,9 +2,6 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 // import Button from "react-bootstrap/Button";
 
-import "./Home.css";
-
-
 function Budget() {
 
     const [show, setShow] = useState(false);

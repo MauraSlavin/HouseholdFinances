@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./account.css";
 
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -10,11 +11,29 @@ export default function Account(props) {
     const handleShow = () => setShow(true);
 
     return (
-        <div className = "acct">
+        <div className>
 
             <div className="account">
-                <img src={props.image} alt={props.alt} />
-                <h3><strong>{props.nickName}</strong></h3>
+                <div className="row">
+                    <h4>{props.nickName}</h4>
+                </div>
+
+                <div className="row">
+                    <div className="col-4">
+                        <img src={props.image} alt={props.alt} />
+                    </div>
+                    <div className="col-8">
+                        <p>
+                            Register Balance: 
+                            <br></br>
+                            <pre>     {props.registerBalance}</pre>
+                            Cleared Balance: 
+                            <br></br>
+                            <pre>     {props.clearedBalance}</pre>
+                        </p>
+                    </div>
+
+                </div>
             </div>
         </div>
     )
