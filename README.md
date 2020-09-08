@@ -51,6 +51,7 @@ Required field is indicated by *.
 2. TransactionID*: ID of transaction in Transactions table
 3. Amount*: float (2 decimal places) - amount of this portion of the transaction
 4. Category*: what category this portion of the transaction belongs to
+5. Description: string - notes on this portion of the transaction
 
 NOTE: The total of the Amounts for all the entries of a given TransactionID should equal the corresponding Amount in the Transactions table.
 
@@ -66,18 +67,18 @@ NOTE:  One transaction from the Transactions table could have multiple entries i
 1. ID*
 2. BeginDate*: datetime - what date the fiscal year starts
 3. Category*: string - name of the category
-4. Jan: float (2 decimal places) - budget amount for this month in current fiscal year; default 0
-5. Feb: float (2 decimal places) - budget amount for this month in current fiscal year; default 0
-6. Mar: float (2 decimal places) - budget amount for this month in current fiscal year; default 0
-7. Apr: float (2 decimal places) - budget amount for this month in current fiscal year; default 0
+4. January: float (2 decimal places) - budget amount for this month in current fiscal year; default 0
+5. February: float (2 decimal places) - budget amount for this month in current fiscal year; default 0
+6. March: float (2 decimal places) - budget amount for this month in current fiscal year; default 0
+7. April: float (2 decimal places) - budget amount for this month in current fiscal year; default 0
 8. May: float (2 decimal places) - budget amount for this month in current fiscal year; default 0
-9. Jun: float (2 decimal places) - budget amount for this month in current fiscal year; default 0
-10. Jul: float (2 decimal places) - budget amount for this month in current fiscal year; default 0
-11. Aug: float (2 decimal places) - budget amount for this month in current fiscal year; default 0
-12. Sep: float (2 decimal places) - budget amount for this month in current fiscal year; default 0
-13. Oct: float (2 decimal places) - budget amount for this month in current fiscal year; default 0
-14. Nov: float (2 decimal places) - budget amount for this month in current fiscal year; default 0
-15. Dec: float (2 decimal places) - budget amount for this month in current fiscal year; default 0
+9. June: float (2 decimal places) - budget amount for this month in current fiscal year; default 0
+10. July: float (2 decimal places) - budget amount for this month in current fiscal year; default 0
+11. August: float (2 decimal places) - budget amount for this month in current fiscal year; default 0
+12. September: float (2 decimal places) - budget amount for this month in current fiscal year; default 0
+13. October: float (2 decimal places) - budget amount for this month in current fiscal year; default 0
+14. November: float (2 decimal places) - budget amount for this month in current fiscal year; default 0
+15. December: float (2 decimal places) - budget amount for this month in current fiscal year; default 0
 
 # Front end design
 
@@ -95,6 +96,7 @@ Clicking on "Budget" will bring you to the Budget page and associated functions.
 Clicking on any of the accounts on the Home page will bring you to the corresponding Account Page.  Here is an example of that:
 ![Account page](documentation/AccountPageDesign.png "Design of the Account Page")
 
+# Create-React-App notes
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
