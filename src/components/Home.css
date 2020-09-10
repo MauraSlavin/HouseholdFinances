@@ -8,11 +8,6 @@
     justify-content: space-between;
 }
 
-/* .account {
-    margin-right: 20px;
-    margin-bottom: 30px;
-    width: 200px;
-} */
 
 .clearfix::after {
     content: " ";
