@@ -1,0 +1,27 @@
+{
+    "development": {
+        "username": "root",
+        "password": "March14Freedom!",
+        "database": "finances",
+        "host": "localhost",
+        "port": 3306,
+        "dialect": "mysql2"
+    },
+    "test": {
+        "username": "root",
+        "password": "March14Freedom!",
+        "database": "finances",
+        "host": "127.0.0.1",
+        "port": 3306,
+        "dialect": "mysql2"
+    },
+    "production": {
+        "username": "root",
+        "password": "March14Freedom!",
+        "database": "finances",
+        "host": "127.0.0.1",
+        "port": 3306,
+        "dialect": "mysql2"
+    }
+
+}

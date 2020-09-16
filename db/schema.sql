@@ -3,17 +3,17 @@ CREATE DATABASE finances;
 
 USE finances;
 
-CREATE TABLE account (
+CREATE TABLE accounts (
   id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   nick_name VARCHAR(30) UNIQUE NOT NULL,
   image VARCHAR(30) DEFAULT "defaultAcctIMage.jpg"
 );
 
-CREATE TABLE transaction (
+CREATE TABLE transactions (
   id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   account_id INT UNSIGNED NOT NULL,
   INDEX acct_id (account_id),
-  CONSTRAINT fk_account FOREIGN KEY (account_id) REFERENCES account(id) ON DELETE CASCADE,
+  CONSTRAINT fk_account FOREIGN KEY (account_id) REFERENCES accounts(id) ON DELETE CASCADE,
   trans_date DATE NOT NULL,
   post_date DATE NOT NULL,
   amount DECIMAL(8,2) NOT NULL,
@@ -23,26 +23,26 @@ CREATE TABLE transaction (
   stmt_date DATE
 );
 
-CREATE TABLE split (
+CREATE TABLE splits (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     transaction_id INT UNSIGNED NOT NULL,
     INDEX trans_id (transaction_id),
-    CONSTRAINT fk1_transaction FOREIGN KEY (transaction_id) REFERENCES transaction(id) ON DELETE CASCADE,
+    CONSTRAINT fk1_transaction FOREIGN KEY (transaction_id) REFERENCES transactions(id) ON DELETE CASCADE,
     amount DECIMAL(8,2) NOT NULL,
     category VARCHAR(30) NOT NULL,
     description VARCHAR(100)
 );
 
-CREATE TABLE bucket (
+CREATE TABLE buckets (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     transaction_id INT UNSIGNED NOT NULL,
     INDEX trans_id (transaction_id),
-    CONSTRAINT fk2_transaction FOREIGN KEY (transaction_id) REFERENCES transaction(id) ON DELETE CASCADE,
+    CONSTRAINT fk2_transaction FOREIGN KEY (transaction_id) REFERENCES transactions(id) ON DELETE CASCADE,
     amount DECIMAL(8,2) NOT NULL,
     bucket VARCHAR(30) NOT NULL
 );
 
-CREATE TABLE budget (
+CREATE TABLE budgets (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     begin_date DATE NOT NULL,
     category VARCHAR(30),

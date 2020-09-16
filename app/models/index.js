@@ -1,17 +1,18 @@
-const dbConfig = require("../config/db.config.js");
+const dbConfig = require("../config/config.js");
 
+// var dbConfig = require(__dirname + "/../config/config.json")[env];
 const Sequelize = require("sequelize");
 const sequelize = new Sequelize(dbConfig.database, dbConfig.username, dbConfig.password, {
     host: dbConfig.host,
     dialect: dbConfig.dialect,
     operatorsAliases: false,
 
-    // pool: {
-    //     max: dbConfig.pool.max,
-    //     min: dbConfig.pool.min,
-    //     acquire: dbConfig.pool.acquire,
-    //     idle: dbConfig.pool.idle
-    // }
+    pool: {
+        max: dbConfig.pool.max,
+        min: dbConfig.pool.min,
+        acquire: dbConfig.pool.acquire,
+        idle: dbConfig.pool.idle
+    }
 });
 
 const db = {};
@@ -19,20 +20,20 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-db.accounts = require("./account.js")(sequelize, Sequelize);
-db.transactions = require("./transaction.js")(sequelize, Sequelize);
-db.splits = require("./split.js")(sequelize, Sequelize);
 db.buckets = require("./bucket.js")(sequelize, Sequelize);
-// db.budgets = require("./budget.js")(sequelize, Sequelize);
+db.splits = require("./split.js")(sequelize, Sequelize);
+db.transactions = require("./transaction.js")(sequelize, Sequelize);
+db.accounts = require("./account.js")(sequelize, Sequelize);
+// // db.budgets = require("./budget.js")(sequelize, Sequelize);
 
 module.exports = db;
-
 
 // var fs = require("fs");
 // var path = require("path");
 // var Sequelize = require("sequelize");
 // var basename = path.basename(module.filename);
 // var env = process.env.NODE_ENV || "development";
+// // var config = require("../config/config.json")[env];
 // var config = require(__dirname + "/../config/config.json")[env];
 // var db = {};
 
@@ -48,6 +49,8 @@ module.exports = db;
 //     return (file.indexOf(".") !== 0) && (file !== basename) && (file.slice(-3) === ".js");
 //   })
 //   .forEach(function(file) {
+//     console.log("-- models / index.js: file: --- ")
+//     console.log(file);
 //     // var model = sequelize["import"](path.join(__dirname, file));
 //     var model = require(__dirname + "/" + file);
 //     db[model.name] = model;
@@ -55,6 +58,7 @@ module.exports = db;
 
 // Object.keys(db).forEach(function(modelName) {
 //   if (db[modelName].associate) {
+//     console.log("modelName:" + modelName);
 //     db[modelName].associate(db);
 //   }
 // });
