@@ -6,7 +6,7 @@ import Button from "react-bootstrap/Button";
 import "./home.css";
 
 import Account from "./Account";
-import accounts from "./accounts.json";
+// import accounts from "./accounts.json";
 
 const acctIcons = [
     require('./images/CheckingAcctImage.jpg'),
@@ -21,11 +21,7 @@ const acctIcons = [
 export default class Home extends Component {
     constructor(props) {
         super(props);
-        // this.accounts = this.accounts.bind(this);
         this.retrieveAccounts = this.retrieveAccounts.bind(this);
-        // const [show, setShow] = useState(false);
-        // const handleClose = () => setShow(false);
-        // const handleShow = () => setShow(true);
 
         this.state = {
             accounts: []

@@ -4,9 +4,9 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 
 function Assets() {
 
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    // const [show, setShow] = useState(false);
+    // const handleClose = () => setShow(false);
+    // const handleShow = () => setShow(true);
 
     return (
         <div className="row">

@@ -6,36 +6,31 @@
 // =============================================================
 var express = require("express");
 const cors = require("cors");
-const bodyParser = require('body-parser');
+// const bodyParser = require('body-parser');
 
-console.log("1");
 // Sets up the Express App
 // =============================================================
 var app = express();
-console.log("2");
 
+// Avoid CORS errors
 var corsOptions = {
   origin: "http://localhost:8081"
 };
 app.use(cors(corsOptions));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({extended: true}));
 
 var PORT = process.env.PORT || 8080;
-console.log("3");
 
 // Requiring our models for syncing
 var db = require("./app/models");
-console.log("4");
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-console.log("5");
 
 // Static directory
 app.use(express.static("public"));
-console.log("6");
 
 // Routes
 app.get("/", (req, res) => {
