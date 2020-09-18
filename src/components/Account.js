@@ -6,32 +6,20 @@ import "./account.css";
 import Button from 'react-bootstrap/Button';
 
 export default function Account(props) {
-    // const [show, setShow] = useState(false);
-    // const handleClose = () => setShow(false);
-    // const handleShow = () => setShow(true);
-    console.log("Account - props");
-    console.log(props);
-    console.log("props.registerBalance");
-    console.log(props.registerBalance);
-    // console.log("props.registerBalance[1]");
-    // console.log(props.registerBalance[1]);
-
     return (
         <div>
 
             <div className="account">
                 <div className="row">
-                    <h4>{props.nick_name}</h4>
+                    <h4>{props.nickName}</h4>
                 </div>
 
                 <div className="row">
-                    <div className="col-4 acct-icon">
+                    <div className="acct-icon col-3 p-0">
                         <img src={props.image} alt={props.alt} />
                     </div>
-                    <div className="col-8">
+                    <div className="col-9">
                         <p>
-                            <strong>{props.nickName}</strong>
-                            <br></br>
                             <span className="small">{props.purpose}</span>
                             <hr></hr>
                             Register Balance:  {props.registerBalance}

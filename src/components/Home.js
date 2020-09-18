@@ -55,7 +55,8 @@ export default class Home extends Component {
                     if (accountIdsWithBalances.includes(account.id)) {
                         // Find index of registerBalances for this account
                         const index = registerBalances.map(e => e.account_id).indexOf(account.id);
-                        account.registerBalance = "$ " + registerBalances[index].balance;
+                        // Puts ","s in.
+                        account.registerBalance = "$ " + parseFloat(registerBalances[index].balance).toLocaleString('en');
                         // account.clearedBalance = clearedBalances[account.id].clearedBalance;
                         account.clearedBalance = "$ 0.00";
                     } else {

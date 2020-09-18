@@ -6,8 +6,9 @@
 }
 
 .acct-icon {
-    height: 100px;
-    width: 100px;
+    height: 90px;
+    width: 90px;
+    z-index:-1;
     animation: icon-spin infinite 10s linear;
 }
 
