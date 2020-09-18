@@ -6,7 +6,13 @@
 }
 
 .acct-icon {
-    animation: icon-spin infinite 20s linear;
+    height: 100px;
+    width: 100px;
+    animation: icon-spin infinite 10s linear;
+}
+
+.small {
+    font-size: 75%;
 }
 
 @keyframes icon-spin {

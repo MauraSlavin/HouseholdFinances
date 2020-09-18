@@ -7,11 +7,6 @@ class AccountDataService {
         return http.get("/accounts");
     };
 
-    getRegisterBalances() {
-        return http.get("/accounts/registerbalances");
-    };
-
-
 }
 
 export default new AccountDataService();

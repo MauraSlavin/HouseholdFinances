@@ -1,11 +1,13 @@
 import React, { useState, Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import AccountDataService from"../services/account.service";
+import TransactionDataService from"../services/transaction.service";
 import Button from "react-bootstrap/Button";
 
 import "./home.css";
 
 import Account from "./Account";
+// import account from "../../app/models/account";
 // import accounts from "./accounts.json";
 
 const acctIcons = [
@@ -21,7 +23,7 @@ const acctIcons = [
 export default class Home extends Component {
     constructor(props) {
         super(props);
-        this.retrieveAccounts = this.retrieveAccounts.bind(this);
+        this.retrieveAccountInfo = this.retrieveAccountInfo.bind(this);
 
         this.state = {
             accounts: []
@@ -29,45 +31,64 @@ export default class Home extends Component {
     }
 
     componentDidMount() {
-        this.retrieveAccounts();
+        this.retrieveAccountInfo();
     }
 
-    retrieveAccounts() {
+    retrieveAccountInfo() {
+        var accounts = [];
+        var registerBalances = [];
+        // var clearedBalances = [];
         AccountDataService.getAll()
         .then(response => {
-            this.setState({
-                accounts: response.data
+            accounts = response.data
+            console.log("accounts retrieved from table:")
+            console.log(accounts);
+        })
+        .then(response => {
+            TransactionDataService.getRegisterBalances()
+            .then(response => {
+                registerBalances = response.data;
+                const accountIdsWithBalances = registerBalances.map(x => x.account_id);
+
+                accounts.forEach( account => {
+                   
+                    if (accountIdsWithBalances.includes(account.id)) {
+                        // Find index of registerBalances for this account
+                        const index = registerBalances.map(e => e.account_id).indexOf(account.id);
+                        account.registerBalance = "$ " + registerBalances[index].balance;
+                        // account.clearedBalance = clearedBalances[account.id].clearedBalance;
+                        account.clearedBalance = "$ 0.00";
+                    } else {
+                        account.registerBalance = "$ 0.00";
+                        account.clearedBalance = "$ 0.00";
+                    };
+                });
+                this.setState({
+                    accounts: accounts
+                });
+
+            })
+            .catch(e => {
+                console.log(e);
             });
-            console.log(response.data);
         })
         .catch(e => {
             console.log(e);
         });
     }
 
-    retrieveRegisterBalances() {
-        AccountDataService.getRegisterBalances()
-        .then(response => {
-            this.setState({
-                balances: response.data
-            });
-            console.log(response.data);
-        })
-        .catch(e => {
-            console.log(e);
-        });
-    }
 
     render() {
         const { accounts } = this.state;
-
         return (
             <div className="row">
                 <div className="col-10 offset-1 text-left">
                     <div className="icons">
                         {accounts.map((account, index) => (
                             <Account
-                                nickName={account.nickName}
+                                key={index}
+                                nickName={account.nick_name}
+                                purpose={account.purpose}
                                 image={acctIcons[index]}
                                 alt={account.alt}
                                 registerBalance={account.registerBalance}

@@ -9,13 +9,19 @@ export default function Account(props) {
     // const [show, setShow] = useState(false);
     // const handleClose = () => setShow(false);
     // const handleShow = () => setShow(true);
+    console.log("Account - props");
+    console.log(props);
+    console.log("props.registerBalance");
+    console.log(props.registerBalance);
+    // console.log("props.registerBalance[1]");
+    // console.log(props.registerBalance[1]);
 
     return (
-        <div className>
+        <div>
 
             <div className="account">
                 <div className="row">
-                    <h4>{props.nickName}</h4>
+                    <h4>{props.nick_name}</h4>
                 </div>
 
                 <div className="row">
@@ -24,12 +30,13 @@ export default function Account(props) {
                     </div>
                     <div className="col-8">
                         <p>
-                            Register Balance: 
+                            <strong>{props.nickName}</strong>
                             <br></br>
-                            <pre>     {props.registerBalance}</pre>
-                            Cleared Balance: 
+                            <span className="small">{props.purpose}</span>
+                            <hr></hr>
+                            Register Balance:  {props.registerBalance}
                             <br></br>
-                            <pre>     {props.clearedBalance}</pre>
+                            Cleared Balance:  {props.clearedBalance}
                         </p>
                     </div>
 
