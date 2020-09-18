@@ -10,10 +10,15 @@
     width: 90px;
     z-index:-1;
     animation: icon-spin infinite 10s linear;
+    margin-top: 15px;
 }
 
 .small {
     font-size: 75%;
+}
+
+.right {
+  text-align: right;
 }
 
 @keyframes icon-spin {

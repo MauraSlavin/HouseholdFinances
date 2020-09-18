@@ -22,9 +22,17 @@ export default function Account(props) {
                         <p>
                             <span className="small">{props.purpose}</span>
                             <hr></hr>
-                            Register Balance:  {props.registerBalance}
-                            <br></br>
-                            Cleared Balance:  {props.clearedBalance}
+                            <div className="row">
+                                <div className="col-7">
+                                    Register Bal:
+                                    Cleared Bal:
+                                </div>
+                                <div className="col-5 right mx-0">
+                                    $ {props.registerBalance}
+                                    <br></br>
+                                    $ {props.clearedBalance}
+                                </div>
+                            </div>
                         </p>
                     </div>
 

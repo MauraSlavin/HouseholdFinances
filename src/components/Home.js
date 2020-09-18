@@ -56,12 +56,12 @@ export default class Home extends Component {
                         // Find index of registerBalances for this account
                         const index = registerBalances.map(e => e.account_id).indexOf(account.id);
                         // Puts ","s in.
-                        account.registerBalance = "$ " + parseFloat(registerBalances[index].balance).toLocaleString('en');
+                        account.registerBalance = parseFloat(registerBalances[index].balance).toFixed(2).toLocaleString('en');
                         // account.clearedBalance = clearedBalances[account.id].clearedBalance;
-                        account.clearedBalance = "$ 0.00";
+                        account.clearedBalance = "0.00";
                     } else {
-                        account.registerBalance = "$ 0.00";
-                        account.clearedBalance = "$ 0.00";
+                        account.registerBalance = "0.00";
+                        account.clearedBalance = "0.00";
                     };
                 });
                 this.setState({
