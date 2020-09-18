@@ -1,5 +1,4 @@
 const db = require('../models');
-// const Account = db.accounts;
 const Account = db.accounts;
 const Op = db.Sequelize.Op;
 
@@ -13,4 +12,5 @@ exports.findAll = (req, res) => {
             message: err.message || "Error occurred reading accounts from Accounts table."
         });
     });
+
 };

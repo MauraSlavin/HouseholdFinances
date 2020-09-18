@@ -5,7 +5,5 @@ module.exports = app => {
 
     router.get("/", accounts.findAll);
 
-
-
     app.use("/api/accounts", router);
 };

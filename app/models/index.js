@@ -25,6 +25,7 @@ db.splits = require("./split.js")(sequelize, Sequelize);
 db.transactions = require("./transaction.js")(sequelize, Sequelize);
 db.accounts = require("./account.js")(sequelize, Sequelize);
 // // db.budgets = require("./budget.js")(sequelize, Sequelize);
+// db.dbFunctions = require("./dbFunctions.js")(sequelize, Sequelize);
 
 module.exports = db;
 

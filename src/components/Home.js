@@ -45,6 +45,19 @@ export default class Home extends Component {
         });
     }
 
+    retrieveRegisterBalances() {
+        AccountDataService.getRegisterBalances()
+        .then(response => {
+            this.setState({
+                balances: response.data
+            });
+            console.log(response.data);
+        })
+        .catch(e => {
+            console.log(e);
+        });
+    }
+
     render() {
         const { accounts } = this.state;
 

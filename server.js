@@ -32,12 +32,11 @@ app.use(express.json());
 // Static directory
 app.use(express.static("public"));
 
-// Routes
-app.get("/", (req, res) => {
-  res.json({ message: "Welcome to Slavin Household Finances."});
-});
 
+// Routes
 require("./app/routes/account.routes.js")(app);
+require("./app/routes/transaction.routes.js")(app);
+
 // =============================================================
 // require("./routes/html-routes.js")(app);
 // require("./routes/author-api-routes.js")(app);

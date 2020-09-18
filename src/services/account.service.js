@@ -5,7 +5,11 @@ class AccountDataService {
     getAll() {
     // findAll() {
         return http.get("/accounts");
-    }
+    };
+
+    getRegisterBalances() {
+        return http.get("/accounts/registerbalances");
+    };
 
 
 }
