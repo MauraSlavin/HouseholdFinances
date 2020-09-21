@@ -1,6 +1,7 @@
 // const { values } = require("sequelize/types/lib/operators");
 
 module.exports = function(sequelize, DataTypes) {
+    const Op = DataTypes.Op;
     var Transaction = sequelize.define("Transaction", {
         id: {
             type: DataTypes.INTEGER,
@@ -9,6 +10,7 @@ module.exports = function(sequelize, DataTypes) {
         account_id: DataTypes.INTEGER,
         trans_date: DataTypes.DATEONLY,
         post_date: DataTypes.DATEONLY,
+        verified: DataTypes.BOOLEAN,
         amount: DataTypes.DECIMAL(8,2),
         to_from: DataTypes.STRING,
         description: DataTypes.STRING,
@@ -40,14 +42,19 @@ module.exports = function(sequelize, DataTypes) {
         });    
     };
 
-    // Transaction.getClearedBalances = function(models) {
-    //     // const { values } = require("sequelize");
-    //     return this.findAll({
-    //         attributes:  [ 'account_id', [sequelize.fn('sum', sequelize.col('amount')), 'balance']],
-    //         group: ['account_id'],
-    //         raw: true  
-    //     });    
-    // };
+    Transaction.getClearedBalances = function(models) {
+        // const { values } = require("sequelize");
+        return this.findAll({
+            attributes:  [ 'account_id', [sequelize.fn('sum', sequelize.col('amount')), 'balance']],
+            group: ['account_id'],
+            where: {
+                post_date: {
+                  [Op.ne]: null
+                }
+              },
+            raw: true  
+        });    
+    };
 
     return Transaction;
 };

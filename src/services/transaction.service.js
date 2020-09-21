@@ -11,6 +11,10 @@ class TransactionDataService {
         return http.get("/transactions/registerbalances");
     };
 
+    getClearedBalances() {
+        return http.get("/transactions/clearedbalances");
+    };
+
 
 }
 

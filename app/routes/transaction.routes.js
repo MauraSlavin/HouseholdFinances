@@ -4,6 +4,7 @@ module.exports = app => {
     var router = require("express").Router();
 
     router.get("/registerbalances", transactions.getRegisterBalances);
+    router.get("/clearedbalances", transactions.getClearedBalances);
 
     app.use("/api/transactions", router);
 };

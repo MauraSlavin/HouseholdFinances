@@ -7,6 +7,7 @@ import Button from "react-bootstrap/Button";
 import "./home.css";
 
 import Account from "./Account";
+// import { Transaction } from "sequelize/types";
 // import account from "../../app/models/account";
 // import accounts from "./accounts.json";
 
@@ -38,7 +39,8 @@ export default class Home extends Component {
     retrieveAccountInfo() {
         var accounts = [];
         var registerBalances = [];
-        // var clearedBalances = [];
+        var clearedBalances = [];
+
         AccountDataService.getAll()
         .then(response => {
             accounts = response.data
@@ -58,17 +60,37 @@ export default class Home extends Component {
                         const index = registerBalances.map(e => e.account_id).indexOf(account.id);
                         // Puts ","s in.
                         account.registerBalance = parseFloat(registerBalances[index].balance).toFixed(2).toLocaleString('en');
-                        // account.clearedBalance = clearedBalances[account.id].clearedBalance;
-                        account.clearedBalance = "0.00";
                     } else {
                         account.registerBalance = "0.00";
-                        account.clearedBalance = "0.00";
                     };
                 });
                 this.setState({
                     accounts: accounts
                 });
 
+            })
+            .catch(e => {
+                console.log(e);
+            });
+        })
+        .then(response => {
+            TransactionDataService.getClearedBalances()
+            .then(response => {
+                clearedBalances = response.data;
+                const accountIdsWithClearedBalances = clearedBalances.map(x => x.account_id);
+                
+                accounts.forEach( account => {
+                    if (accountIdsWithClearedBalances.includes(account.id)) {
+                        const index = clearedBalances.map(e => e.account_id).indexOf(account.id);
+                        account.clearedBalance = parseFloat(clearedBalances[index].balance).toFixed(2).toLocaleString('en');
+                    } else {
+                        account.clearedBalance = "0.00";
+                    };
+                });
+                this.setState({
+                    accounts: accounts
+                });
+                
             })
             .catch(e => {
                 console.log(e);

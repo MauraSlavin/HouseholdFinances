@@ -15,7 +15,7 @@ CREATE TABLE transactions (
   INDEX acct_id (account_id),
   CONSTRAINT fk_account FOREIGN KEY (account_id) REFERENCES accounts(id) ON DELETE CASCADE,
   trans_date DATE NOT NULL,
-  post_date DATE NOT NULL,
+  post_date DATE,
   amount DECIMAL(8,2) NOT NULL,
   to_from VARCHAR(30) NOT NULL,
   description VARCHAR(100),

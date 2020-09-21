@@ -27,6 +27,7 @@ App for managing household finances.  Track transactions, verify balances, see t
     3. Ability to add, rename, delete buckets
 14. Ability to assign values by month for each category in the budget
 15. See year-to-date budget vs. actual by month
+16. Ability to order accounts on home page (click on icon and drag?)
 
 
 # SQL database

@@ -1,7 +1,6 @@
 const db = require('../models');
 const Transaction = db.transactions;
-// const DbFunctions = db.dbFunctions;
-const Op = db.Sequelize.Op;
+// const Op = db.Sequelize.Op;
 
 exports.getRegisterBalances = (req, res) => {
     Transaction.getRegisterBalances()
@@ -14,3 +13,15 @@ exports.getRegisterBalances = (req, res) => {
         });
     });
 };
+
+exports.getClearedBalances = (req, res) => {
+    Transaction.getClearedBalances()
+    .then(data => {
+        res.send(data);
+    })
+    .catch(err => {
+        res.status(500).send({
+            message: err.message || "Error occurred retrieving cleared balances."
+        });
+    });
+}

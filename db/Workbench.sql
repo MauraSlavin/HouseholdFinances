@@ -18,7 +18,8 @@ CREATE TABLE transactions (
   INDEX acct_id (account_id),
   CONSTRAINT fk_account FOREIGN KEY (account_id) REFERENCES accounts(id) ON DELETE CASCADE,
   trans_date DATE NOT NULL,
-  post_date DATE NOT NULL,
+  post_date DATE,
+  verified BOOLEAN default FALSE,
   amount DECIMAL(8,2) NOT NULL,
   to_from VARCHAR(30) NOT NULL,
   description VARCHAR(100),
@@ -74,21 +75,22 @@ CREATE TABLE budgets (
 INSERT INTO accounts
     (id, nick_name, image, purpose)
 VALUES
-    (1, 'Household Checking', 'CheckingAcctImage.jpg', 'Everyday bills and expenses; Mike pay DD'), 
-    (2, 'Big Bills', 'BigBillsImage.jpg', 'Save for bigger expenses.'),
-    (3, 'Credit Card', 'DiscCCImage.jpg', ''),
-    (4, 'Backup CC', 'BackupCCImage.jpg', 'When primary card is declined.'),
-    (5, 'Mike Spending', 'MikeSpendingImage.jpg', 'Fun for Mike.'),
-    (6, 'Maura Spending', 'MauraSpendingImage.jpg', 'Fun for Maura.');
+    (1, 'Household Checking', 'CheckingAcctImage.jpg', 'Everyday bills & expenses; regular pay goes here'), 
+    (2, 'Big Bills', 'BigBillsImage.jpg', 'Save for bigger expenses'),
+    (3, 'Credit Card', 'DiscCCImage.jpg', 'Primary credit card'),
+    (4, 'Backup CC', 'BackupCCImage.jpg', 'When primary card is declined'),
+    (5, 'Mike Spending', 'MikeSpendingImage.jpg', 'Fun for Mike'),
+    (6, 'Maura Spending', 'MauraSpendingImage.jpg', 'Fun for Maura'),
+    (7, 'Cash', 'Cash.jpg', 'Odds & ends');
 
 INSERT INTO transactions
-    (id, account_id, trans_date, post_date, amount, to_from, description, category, stmt_date)
+    (id, account_id, trans_date, post_date, verified, amount, to_from, description, category, stmt_date)
 VALUES  
-    (1, 1, "2020-08-01", "2020-08-01", 1000, "Beginning",     "Start",              "Transfer",  "2020-08-01"),
-    (2, 1, "2020-08-15", "2020-08-20", -220, "Eversource",    "Electric bill",      "Utilities", "2020-08-01"),
-    (3, 1, "2020-09-01", "2020-09-14", -150, "Market Basket", "Tot: $150",          "SPLIT",     "2020-09-01"),
-    (4, 1, "2020-09-01", "2020-09-04",  -20, "SCU ATM",       "Household spending", "Transfer",  "2020-09-01"),
-    (5, 2, "2020-08-01", "2020-08-01", 5000, "Beginning",     "Start",              "Transfer",  "2020-08-01");
+    (1, 1, "2020-08-01", "2020-08-01", 1, 1000, "Beginning",     "Start",              "Transfer",  "2020-08-01"),
+    (2, 1, "2020-08-15", "2020-08-20", 0, -220, "Eversource",    "Electric bill",      "Utilities", "2020-08-01"),
+    (3, 1, "2020-09-01", NULL, 1, -150, "Market Basket", "Tot: $150",          "SPLIT",     "2020-09-01"),
+    (4, 1, "2020-09-01", "2020-09-21", 1,  -20, "SCU ATM",       "Household spending", "Transfer",  "2020-09-01"),
+    (5, 2, "2020-08-01", "2020-08-01", 1, 5000, "Beginning",     "Start",              "Transfer",  "2020-08-01");
 
 INSERT INTO splits
     (id, transaction_id, amount, category, description)
@@ -121,3 +123,5 @@ SELECT * FROM transactions;
 SELECT * FROM splits;
 SELECT * FROM buckets;
 SELECT * FROM budgets;
+
+SELECT SUM(amount) FROM transactions WHERE account_id = 1;
