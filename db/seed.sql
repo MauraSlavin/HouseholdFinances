@@ -3,13 +3,13 @@ use finances;
 INSERT INTO accounts
     (id, nick_name, image, purpose)
 VALUES
-    (1, 'Household Checking', 'CheckingAcctImage.jpg', 'Everyday bills & expenses; regular pay goes here'), 
-    (2, 'Big Bills', 'BigBillsImage.jpg', 'Save for bigger expenses'),
-    (3, 'Credit Card', 'DiscCCImage.jpg', 'Primary credit card'),
-    (4, 'Backup CC', 'BackupCCImage.jpg', 'When primary card is declined'),
-    (5, 'Mike Spending', 'MikeSpendingImage.jpg', 'Fun for Mike'),
-    (6, 'Maura Spending', 'MauraSpendingImage.jpg', 'Fun for Maura'),
-    (7, 'Cash', 'Cash.jpg', null);
+    (1, 'Household Checking', 'CheckingAcctImage.png', 'Everyday bills & expenses; regular pay goes here'), 
+    (2, 'Big Bills', 'BigBillsImage.png', 'Save for bigger expenses'),
+    (3, 'Credit Card', 'DiscCCImage.png', 'Primary credit card'),
+    (4, 'Backup CC', 'BackupCCImage.png', 'When primary card is declined'),
+    (5, 'Mike Spending', 'MikeSpendingImage.png', 'Fun for Mike'),
+    (6, 'Maura Spending', 'MauraSpendingImage.png', 'Fun for Maura'),
+    (7, 'Cash', 'Cash.png', null);
 
 INSERT INTO transactions
     (id, account_id, trans_date, post_date, verified, amount, to_from, description, category, stmt_date)

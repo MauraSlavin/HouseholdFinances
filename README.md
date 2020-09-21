@@ -38,7 +38,7 @@ Required field is indicated by *.
 ## Accounts Table
 1. ID*
 2. NickName*: string - nickname for the account (i.e. "Household checking")
-3. Image: string - name of the file containing the icon for this account (default: DefaultAcctImage.jpg)
+3. Image: string - name of the file containing the icon for this account (default: DefaultAcctImage.png)
 4. Purpose: string - what this account is used for
 
 ## Transactions Table

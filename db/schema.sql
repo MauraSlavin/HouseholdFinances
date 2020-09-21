@@ -6,7 +6,7 @@ USE finances;
 CREATE TABLE accounts (
   id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   nick_name VARCHAR(30) UNIQUE NOT NULL,
-  image VARCHAR(30) DEFAULT "defaultAcctIMage.jpg",
+  image VARCHAR(30) DEFAULT "defaultAcctIMage.png",
   purpose VARCHAR(100),
   createdAt TIMESTAMP DEFAULT current_timestamp(),
   updatedAt TIMESTAMP DEFAULT current_timestamp()

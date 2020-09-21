@@ -1,24 +1,27 @@
 import React, { useState, Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import AccountDataService from"../services/account.service";
-import TransactionDataService from"../services/transaction.service";
+import AccountDataService from "../services/account.service";
+import TransactionDataService from "../services/transaction.service";
 import Button from "react-bootstrap/Button";
 
 import "./home.css";
 
 import Account from "./Account";
+// next line is to test AccountTransactions component
+import AccountTransactions from "./AccountTransactions";
+// import { getAccountTransactions } from "../../app/controllers/transaction.controller";
 // import { Transaction } from "sequelize/types";
 // import account from "../../app/models/account";
 // import accounts from "./accounts.json";
 
 const acctIcons = [
-    require('./images/CheckingAcctImage.jpg'),
-    require('./images/BigBillsImage.jpg'),
-    require('./images/DiscCCImage.jpg'),
-    require('./images/BackupCCImage.jpg'),
-    require('./images/MikeSpendingImage.jpg'),
-    require('./images/MauraSpendingImage.jpg'),
-    require('./images/CashImage.jpg')
+    require('./images/CheckingAcctImage.png'),
+    require('./images/BigBillsImage.png'),
+    require('./images/DiscCCImage.png'),
+    require('./images/BackupCCImage.png'),
+    require('./images/MikeSpendingImage.png'),
+    require('./images/MauraSpendingImage.png'),
+    require('./images/CashImage.png')
 ];
 
 // function Home() {
@@ -105,22 +108,33 @@ export default class Home extends Component {
     render() {
         const { accounts } = this.state;
         return (
-            <div className="row">
-                <div className="col-10 offset-1 text-left">
-                    <div className="icons">
-                        {accounts.map((account, index) => (
-                            <Account
-                                key={index}
-                                nickName={account.nick_name}
-                                purpose={account.purpose}
-                                image={acctIcons[index]}
-                                alt={account.alt}
-                                registerBalance={account.registerBalance}
-                                clearedBalance={account.clearedBalance}
-                            />
-                        ))}
+            // next line temp to test AccountTransactions component
+            <div> 
+                <div className="row">
+                    <div className="col-10 offset-1 text-left">
+                        <div className="icons">
+                            {accounts.map((account, index) => (
+                                <Account
+                                    key={index}
+                                    nickName={account.nick_name}
+                                    purpose={account.purpose}
+                                    image={acctIcons[index]}
+                                    alt={account.alt}
+                                    registerBalance={account.registerBalance}
+                                    clearedBalance={account.clearedBalance}
+                                    
+                                />
+                            ))}
+                        </div>
                     </div>
                 </div>
+                {/* This row is just to test the AccountTransactions component */}
+                {/* <div className="row">
+                    <AccountTransactions
+                        acct_id="1"
+                        />
+                </div> */}
+            {/* next line temp to test AccountTransactions component */}
             </div>
 
         );

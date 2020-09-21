@@ -16,9 +16,9 @@ export default function Account(props) {
                 </div>
 
                 <div className="row">
-                    <div className="acct-icon col-3 p-0">
-                        <img src={props.image} alt={props.alt} />
-                    </div>
+                    <button className="acct-icon btn col-3 p-0">
+                        <img className="acct-icon" src={props.image} alt={props.alt} />
+                    </button>
                     <div className="col-9">
                         <div className="row">
                             <div className="col-7">
