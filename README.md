@@ -27,7 +27,7 @@ App for managing household finances.  Track transactions, verify balances, see t
     3. Ability to add, rename, delete buckets
 14. Ability to assign values by month for each category in the budget
 15. See year-to-date budget vs. actual by month
-16. Ability to order accounts on home page (click on icon and drag?)
+16. Ability to order accounts on home page (click on icon and drag?), and save ordering
 
 
 # SQL database
@@ -45,13 +45,13 @@ Required field is indicated by *.
 1. ID*
 2. AccountID*: - ID of the account in the Accounts table
 3. TransDate*: datetime - date of the transaction initiated
-4. PostDate: datetime   - date the transaction posted/cleared; default TransDate
+4. PostDate: datetime   - date the transaction posted/cleared; default NULL
 5. Verified: boolean - true if the transaction has been verified by receipts or other means, default FALSE
 5. Amount*: float (2 decimal places) - amount of the transaction
 6. ToFrom*: string - where the transaction was going to or from
-7. Description: string - more information about the transaction; default empty
+7. Description: string - more information about the transaction; default NULL
 8. Category*: string - category this transaction belongs to, or "SPLIT" if multiple categories
-9. StmtDate: datetime - if an account with statements, the statement date this transaction will appear on; default empty
+9. StmtDate: datetime - if an account with statements, the statement date this transaction will appear on; default NULL
 
 ## Splits Table
 1. ID*

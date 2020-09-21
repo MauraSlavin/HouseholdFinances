@@ -55,7 +55,7 @@ CREATE TABLE buckets (
 CREATE TABLE budgets (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     begin_date DATE NOT NULL,
-    category VARCHAR(30),
+    category VARCHAR(30) NOT NULL,
     january DECIMAL(8,2) DEFAULT 0.00,
     february DECIMAL(8,2) DEFAULT 0.00,
     march DECIMAL(8,2) DEFAULT 0.00,
@@ -81,15 +81,15 @@ VALUES
     (4, 'Backup CC', 'BackupCCImage.jpg', 'When primary card is declined'),
     (5, 'Mike Spending', 'MikeSpendingImage.jpg', 'Fun for Mike'),
     (6, 'Maura Spending', 'MauraSpendingImage.jpg', 'Fun for Maura'),
-    (7, 'Cash', 'Cash.jpg', 'Odds & ends');
+    (7, 'Cash', 'Cash.jpg', null);
 
 INSERT INTO transactions
     (id, account_id, trans_date, post_date, verified, amount, to_from, description, category, stmt_date)
 VALUES  
     (1, 1, "2020-08-01", "2020-08-01", 1, 1000, "Beginning",     "Start",              "Transfer",  "2020-08-01"),
     (2, 1, "2020-08-15", "2020-08-20", 0, -220, "Eversource",    "Electric bill",      "Utilities", "2020-08-01"),
-    (3, 1, "2020-09-01", NULL, 1, -150, "Market Basket", "Tot: $150",          "SPLIT",     "2020-09-01"),
-    (4, 1, "2020-09-01", "2020-09-21", 1,  -20, "SCU ATM",       "Household spending", "Transfer",  "2020-09-01"),
+    (3, 1, "2020-09-01", NULL,         1, -150, "Market Basket", "Tot: $150",          "SPLIT",     "2020-09-01"),
+    (4, 1, "2020-09-01", "2020-09-21", 1,  -20, "SCU ATM",       "Household spending", "Transfer",  NULL),
     (5, 2, "2020-08-01", "2020-08-01", 1, 5000, "Beginning",     "Start",              "Transfer",  "2020-08-01");
 
 INSERT INTO splits
