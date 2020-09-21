@@ -24,4 +24,18 @@ exports.getClearedBalances = (req, res) => {
             message: err.message || "Error occurred retrieving cleared balances."
         });
     });
+};
+
+exports.getAccountTransactions = (req, res) => {
+    const id = req.params.id;
+    
+    Transaction.getAccountTransactions(id)
+    .then(data => {
+        res.send(data);
+    })
+    .catch(err => {
+        res.status(500).send({
+            message: err.message || `Error occureed retrieving transactions for account with id of ${id}.`
+        });
+    });
 }

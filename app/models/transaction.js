@@ -56,5 +56,14 @@ module.exports = function(sequelize, DataTypes) {
         });    
     };
 
+    Transaction.getAccountTransactions = function(id, models) {
+
+        return this.findAll({
+            where: {
+                account_id: id
+            }
+        });
+    };
+
     return Transaction;
 };

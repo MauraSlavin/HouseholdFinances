@@ -5,6 +5,7 @@ module.exports = app => {
 
     router.get("/registerbalances", transactions.getRegisterBalances);
     router.get("/clearedbalances", transactions.getClearedBalances);
+    router.get("/:id", transactions.getAccountTransactions);
 
     app.use("/api/transactions", router);
 };
