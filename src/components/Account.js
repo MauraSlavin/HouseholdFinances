@@ -7,11 +7,12 @@ import Button from 'react-bootstrap/Button';
 
 export default function Account(props) {
     return (
-        <div>
+        <div className="border-bottom mt-2">
 
             <div className="account">
                 <div className="row">
-                    <h4>{props.nickName}</h4>
+                    <h4><u>{props.nickName}</u></h4>
+                    <div><span className="small">{props.purpose}</span></div>
                 </div>
 
                 <div className="row">
@@ -19,21 +20,19 @@ export default function Account(props) {
                         <img src={props.image} alt={props.alt} />
                     </div>
                     <div className="col-9">
-                        <p>
-                            <span className="small">{props.purpose}</span>
-                            <hr></hr>
-                            <div className="row">
-                                <div className="col-7">
-                                    Register Bal:
-                                    Cleared Bal:
-                                </div>
-                                <div className="col-5 right mx-0">
-                                    $ {props.registerBalance}
-                                    <br></br>
-                                    $ {props.clearedBalance}
-                                </div>
+                        <div className="row">
+                            <div className="col-7">
+                                <br></br>
+                                Register Bal:
+                                Cleared Bal:
                             </div>
-                        </p>
+                            <div className="col-5 right mx-0">
+                                <br></br>
+                                $ {props.registerBalance}
+                                <br></br>
+                                $ {props.clearedBalance}
+                            </div>
+                        </div>
                     </div>
 
                 </div>

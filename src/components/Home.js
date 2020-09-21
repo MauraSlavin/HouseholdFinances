@@ -16,7 +16,8 @@ const acctIcons = [
     require('./images/DiscCCImage.jpg'),
     require('./images/BackupCCImage.jpg'),
     require('./images/MikeSpendingImage.jpg'),
-    require('./images/MauraSpendingImage.jpg')
+    require('./images/MauraSpendingImage.jpg'),
+    require('./images/CashImage.jpg')
 ];
 
 // function Home() {

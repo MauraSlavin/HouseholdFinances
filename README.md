@@ -1,6 +1,11 @@
 # HouseholdFinances
 App for managing household finances.  Track transactions, verify balances, see total assets, create and track budget by categories, earmark portions of balance in some accounts using "buckets."
 
+# Completed functions:
+
+1. See total balance for each account.
+2. See a snapshot of all accounts
+
 # Planned functions:
 
 1. Import transactions from an Excel file to the database for multiple accounts
@@ -14,15 +19,14 @@ App for managing household finances.  Track transactions, verify balances, see t
 8. See an account by transaction date (to verify statement balances & transactions)
 9. Manually enter transactions
 10. Manually update transactions
-11. See cleared balance, and total balance
-12. See a snapshot of all accounts
-13. See income / spending for all accounts by category
-14. Allow for "buckets" in some accounts, where money is earmarked for specific purposes
+11. See cleared balance for each account.
+12. See income / spending for all accounts by category
+13. Allow for "buckets" in some accounts, where money is earmarked for specific purposes
     1. Ability to see buckets for the account
     2. Ability to move money from one bucket to another
     3. Ability to add, rename, delete buckets
-15. Ability to assign values by month for each category
-16. See year-to-date budget vs. actual by month
+14. Ability to assign values by month for each category in the budget
+15. See year-to-date budget vs. actual by month
 
 
 # SQL database
@@ -32,14 +36,16 @@ Required field is indicated by *.
 
 ## Accounts Table
 1. ID*
-2. Account*: string - nickname for the account (i.e. "Household checking")
-3. TransDate*: datetime - date of the transaction initiated
+2. NickName*: string - nickname for the account (i.e. "Household checking")
+3. Image: string - name of the file containing the icon for this account (default: DefaultAcctImage.jpg)
+4. Purpose: string - what this account is used for
 
 ## Transactions Table
 1. ID*
 2. AccountID*: - ID of the account in the Accounts table
 3. TransDate*: datetime - date of the transaction initiated
 4. PostDate: datetime   - date the transaction posted/cleared; default TransDate
+5. Verified: boolean - true if the transaction has been verified by receipts or other means, default FALSE
 5. Amount*: float (2 decimal places) - amount of the transaction
 6. ToFrom*: string - where the transaction was going to or from
 7. Description: string - more information about the transaction; default empty
