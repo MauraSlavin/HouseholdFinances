@@ -17,6 +17,8 @@ h4 {
   /* z-index:-1; */
   /* margin-top: 15px; */
   border-radius: 50%;
+  background-color: transparent !important;
+  border-color: transparent !important;
 }
 
 .acct-icon:hover {

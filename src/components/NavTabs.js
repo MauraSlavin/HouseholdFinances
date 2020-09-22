@@ -9,28 +9,28 @@ function NavTabs() {
                     <Link
                         to="/home"
                         className="nav-link"
-                    >Home</Link>
+                    ><strong>Home</strong></Link>
                 </li>
 
                 <li className = "nav-item m-1 ml-auto">
                     <Link
                         to="/assets"
                         className="nav-link"
-                    >Assets</Link>
+                    ><strong>Assets</strong></Link>
                 </li>
 
                 <li className = "nav-item m-1">
                     <Link
                         to="/spending"
                         className="nav-link"
-                    >Spending</Link>
+                    ><strong>Spending</strong></Link>
                 </li>
 
                 <li className = "nav-item m-1">
                     <Link
                         to="/budget"
                         className="nav-link"
-                    >Budget</Link>
+                    ><strong>Budget</strong></Link>
                 </li>
 
             </ul>

@@ -4,6 +4,7 @@ import Home from "./Home";
 import Assets from "./Assets";
 import Spending from "./Spending";
 import Budget from "./Budget";
+import Transactions from "./Transactions";
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
@@ -23,7 +24,7 @@ function Header() {
                     <Route exact path="/budget" component={Budget} />
                     <Route exact path="/assets" component={Assets} />
                     <Route exact path="/spending" component={Spending} />
-                    {/* <Route exact path="/accountdetails" component={AcctDetails} /> */}
+                    <Route exact path="/account/transactions/:id" component={Transactions} />
                     
                 </div>
             </div>

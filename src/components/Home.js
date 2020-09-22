@@ -2,13 +2,13 @@ import React, { useState, Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import AccountDataService from "../services/account.service";
 import TransactionDataService from "../services/transaction.service";
-import Button from "react-bootstrap/Button";
+// import Button from "react-bootstrap/Button";
 
 import "./home.css";
 
 import Account from "./Account";
 // next line is to test AccountTransactions component
-import AccountTransactions from "./AccountTransactions";
+// import AccountTransactions from "./AccountTransactions";
 // import { getAccountTransactions } from "../../app/controllers/transaction.controller";
 // import { Transaction } from "sequelize/types";
 // import account from "../../app/models/account";
@@ -21,13 +21,14 @@ const acctIcons = [
     require('./images/BackupCCImage.png'),
     require('./images/MikeSpendingImage.png'),
     require('./images/MauraSpendingImage.png'),
-    require('./images/CashImage.png')
+    require('./images/CashImage.png'),
+    require('./images/DefaultAcctImage.png')
 ];
 
 // function Home() {
 export default class Home extends Component {
     constructor(props) {
-        super(props);
+        super();
         this.retrieveAccountInfo = this.retrieveAccountInfo.bind(this);
 
         this.state = {
@@ -47,8 +48,8 @@ export default class Home extends Component {
         AccountDataService.getAll()
         .then(response => {
             accounts = response.data
-            console.log("accounts retrieved from table:")
-            console.log(accounts);
+            // console.log("accounts retrieved from table:")
+            // console.log(accounts);
         })
         .then(response => {
             TransactionDataService.getRegisterBalances()
@@ -111,7 +112,7 @@ export default class Home extends Component {
             // next line temp to test AccountTransactions component
             <div> 
                 <div className="row">
-                    <div className="col-10 offset-1 text-left">
+                    <div className="col-11 offset-1 text-left">
                         <div className="icons">
                             {accounts.map((account, index) => (
                                 <Account
@@ -122,19 +123,12 @@ export default class Home extends Component {
                                     alt={account.alt}
                                     registerBalance={account.registerBalance}
                                     clearedBalance={account.clearedBalance}
-                                    
+                                    account_id={account.account_id}
                                 />
                             ))}
                         </div>
                     </div>
                 </div>
-                {/* This row is just to test the AccountTransactions component */}
-                {/* <div className="row">
-                    <AccountTransactions
-                        acct_id="1"
-                        />
-                </div> */}
-            {/* next line temp to test AccountTransactions component */}
             </div>
 
         );
