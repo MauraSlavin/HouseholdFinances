@@ -4,10 +4,6 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 
 function Assets() {
 
-    // const [show, setShow] = useState(false);
-    // const handleClose = () => setShow(false);
-    // const handleShow = () => setShow(true);
-
     return (
         <div className="row">
             <div className="col-10 offset-1 text-left">

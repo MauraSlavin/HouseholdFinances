@@ -49,6 +49,7 @@ export default class Transactions extends Component {
                 stmt_date: "08/01/2020"
             }
         ];
+
         
         this.setState({
             transactions: transactions
@@ -58,12 +59,14 @@ export default class Transactions extends Component {
 
     render() {
         const { transactions } = this.state;
+
         return (
 
             <div className="border-bottom mt-2">
                 <h1> Account Transactions</h1>
                 <div>
-                    <p>Transactions for this account go here.</p>
+                    <p>Transactions for the account go here.</p>
+
                     {/* <div className="row">
                         <h4><u>{props.nickName}</u></h4>
                         <div><span className="small">{props.purpose}</span></div>

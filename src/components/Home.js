@@ -2,17 +2,10 @@ import React, { useState, Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import AccountDataService from "../services/account.service";
 import TransactionDataService from "../services/transaction.service";
-// import Button from "react-bootstrap/Button";
+import Account from "./Account";
 
 import "./home.css";
 
-import Account from "./Account";
-// next line is to test AccountTransactions component
-// import AccountTransactions from "./AccountTransactions";
-// import { getAccountTransactions } from "../../app/controllers/transaction.controller";
-// import { Transaction } from "sequelize/types";
-// import account from "../../app/models/account";
-// import accounts from "./accounts.json";
 
 const acctIcons = [
     require('./images/CheckingAcctImage.png'),
@@ -25,7 +18,6 @@ const acctIcons = [
     require('./images/DefaultAcctImage.png')
 ];
 
-// function Home() {
 export default class Home extends Component {
     constructor(props) {
         super();

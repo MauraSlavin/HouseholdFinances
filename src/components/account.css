@@ -14,14 +14,15 @@ h4 {
 .acct-icon {
   height: 82.5px;
   width: 82.5px;
-  /* z-index:-1; */
-  /* margin-top: 15px; */
   border-radius: 50%;
+}
+
+.acct-btn {
   background-color: transparent !important;
   border-color: transparent !important;
 }
 
-.acct-icon:hover {
+.acct-btn:hover {
   animation: icon-spin infinite 5s linear;
   position: center;
 }

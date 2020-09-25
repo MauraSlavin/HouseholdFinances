@@ -1,5 +1,7 @@
 // import React, { useState, Route, Link, Component } from "react";
 import React, { useState, Link } from "react";
+import LinkButton from './LinkButton';
+
 import "./account.css";
 
 // import 'bootstrap/dist/css/bootstrap.min.css';
@@ -7,32 +9,7 @@ import "./account.css";
 import Button from 'react-bootstrap/Button';
 
 export default function Account(props) {
-    // export default class Account extends Component {
-        //     constructor(props) {
-            //         super();
-            
-//         this.state = {
-    //             thisAccount: {
-        //                 account_id: null,
-        //                 nickName: "",
-        //                 purpose: "",
-        //                 image: "",
-        //                 alt: ""
-        //             }
-        //         };
-        //     }
-        
-        //     componentDidMount() {
-            //         this.setState({
-                //             thisAccount: this.props
-                //         });
-                //     }
-                
-                // render() {
-                    //     // const { account } = this.state;
-                    //     return (
-    return (
-    
+    return (    
 
         <div className="border-bottom border-dark mt-2">
 
@@ -43,15 +20,9 @@ export default function Account(props) {
                 </div>
 
                 <div className="row">
-                    {/* <Link 
-                        to={`/account/transactions/${props.account_id}`}
-                        className="acct-icon btn-light col-3 p-0">
+                    <LinkButton className="acct-btn" to={"account/transactions/" + props.accountId}>
                         <img className="acct-icon" src={props.image} alt={props.alt} />
-                    </Link> */}
-                    <Button
-                        className="acct-icon btn-light col-3 p-0">
-                        <img className="acct-icon" src={props.image} alt={props.alt} />
-                    </Button>
+                    </LinkButton>
 
 
                     <div className="col-9">
