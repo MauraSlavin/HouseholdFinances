@@ -17,7 +17,7 @@ class TransactionDataService {
 
     getAccountTransactions(id) {
         return http.get(`/transactions/${id}`);
-    }
+    };
 
 }
 

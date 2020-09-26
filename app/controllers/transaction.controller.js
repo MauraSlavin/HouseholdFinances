@@ -28,9 +28,12 @@ exports.getClearedBalances = (req, res) => {
 
 exports.getAccountTransactions = (req, res) => {
     const id = req.params.id;
+    console.log("In transaction.controller.js - getAccountTransactions");
     
     Transaction.getAccountTransactions(id)
     .then(data => {
+        console.log("data:");
+        console.log(data);
         res.send(data);
     })
     .catch(err => {

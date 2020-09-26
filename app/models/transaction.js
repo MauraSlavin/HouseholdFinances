@@ -57,7 +57,7 @@ module.exports = function(sequelize, DataTypes) {
     };
 
     Transaction.getAccountTransactions = function(id, models) {
-
+        console.log("In transaction.js (of models) - getAccountTransactions");
         return this.findAll({
             where: {
                 account_id: id

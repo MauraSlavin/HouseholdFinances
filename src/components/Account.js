@@ -20,7 +20,7 @@ export default function Account(props) {
                 </div>
 
                 <div className="row">
-                    <LinkButton className="acct-btn" to={"account/transactions/" + props.accountId}>
+                    <LinkButton className="acct-btn" to={"account/transactions/" + props.account_id}>
                         <img className="acct-icon" src={props.image} alt={props.alt} />
                     </LinkButton>
 
@@ -31,12 +31,15 @@ export default function Account(props) {
                                 <br></br>
                                 Register:
                                 Cleared:
+                                ID:
                             </div>
                             <div className="col-7 right mx-0">
                                 <br></br>
                                 <strong>$ {props.registerBalance}</strong>
                                 <br></br>
                                 <strong>$ {props.clearedBalance}</strong>
+                                <br></br>
+                                <strong>{props.account_id}</strong>
                             </div>
                         </div>
                     </div>

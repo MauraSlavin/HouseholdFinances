@@ -59,6 +59,8 @@ export default class Home extends Component {
                     } else {
                         account.registerBalance = "0.00";
                     };
+                    console.log("Account:");
+                    console.log(account);
                 });
                 this.setState({
                     accounts: accounts
@@ -115,7 +117,7 @@ export default class Home extends Component {
                                     alt={account.alt}
                                     registerBalance={account.registerBalance}
                                     clearedBalance={account.clearedBalance}
-                                    account_id={account.account_id}
+                                    account_id={account.id}
                                 />
                             ))}
                         </div>
