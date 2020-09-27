@@ -1,14 +1,20 @@
 import React, { useState, useEffect, memo, useMemo } from "react";
 import { useTable } from "react-table";
+import { Container, Table } from "reactstrap";
+
 import TransactionDataService from "../services/transaction.service";
 
-// import "./transaction.css";
-// import 'bootstrap/dist/css/bootstrap.min.css';
+// code modelled after thewidlarzgroup.com/react-table-7
+
+import "./account.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
 // import Button from 'react-bootstrap/Button';
 
 const Transactions = memo(props => {
 
     const account_id = props.match.params.id;
+    const nick_name = props.match.params.nickName;
+
     const [data, setData] = useState([]);
     
     // useEffect( () => {
@@ -78,34 +84,36 @@ const Transactions = memo(props => {
 
     return(
         <div className="border-bottom mt-2">
-            <h1>Account Transactions</h1>
+            <h1 className="text-center">Account Transactions</h1>
             <div>
-                <p>Transactions for the account go here.</p>
-                <p>For account #: {account_id}</p>
-
-                <table {...getTableProps()}>
-                    <thead>
-                        {headerGroups.map(headerGroup => (
-                        <tr {...headerGroup.getHeaderGroupProps()}>
-                            {headerGroup.headers.map(column => (
-                            <th {...column.getHeaderProps()}>{column.render("Header")}</th>
-                            ))}
-                        </tr>
-                        ))}
-                    </thead>
-                    <tbody {...getTableBodyProps()}>
-                        {rows.map((row, i) => {
-                        prepareRow(row);
-                        return (
-                            <tr {...row.getRowProps()}>
-                            {row.cells.map(cell => {
-                                return <td {...cell.getCellProps()}>{cell.render("Cell")}</td>;
-                            })}
+                <p className="text-center">For account#: {account_id}</p>
+                <Container style={{ martinTop: 100 }}>
+                    {/* <table {...getTableProps()}> */}
+                    <Table bordered hover {...getTableProps()}>
+                        <thead>
+                            {headerGroups.map(headerGroup => (
+                            <tr {...headerGroup.getHeaderGroupProps()}>
+                                {headerGroup.headers.map(column => (
+                                <th {...column.getHeaderProps()}>{column.render("Header")}</th>
+                                ))}
                             </tr>
-                        );
-                        })}
-                    </tbody>
-                </table>
+                            ))}
+                        </thead>
+                        <tbody {...getTableBodyProps()}>
+                            {rows.map((row, i) => {
+                            prepareRow(row);
+                            return (
+                                <tr {...row.getRowProps()}>
+                                {row.cells.map(cell => {
+                                    return <td {...cell.getCellProps()}>{cell.render("Cell")}</td>;
+                                })}
+                                </tr>
+                            );
+                            })}
+                        </tbody>
+                    {/* </table> */}
+                    </Table>
+                </Container>
             </div>
         </div>
     );
