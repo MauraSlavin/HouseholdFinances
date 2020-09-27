@@ -32,8 +32,8 @@ exports.getAccountTransactions = (req, res) => {
     
     Transaction.getAccountTransactions(id)
     .then(data => {
-        console.log("data:");
-        console.log(data);
+        // console.log("data:");
+        // console.log(data);
         res.send(data);
     })
     .catch(err => {
