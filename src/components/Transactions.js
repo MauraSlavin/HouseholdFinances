@@ -11,14 +11,23 @@ const Transactions = memo(props => {
     const account_id = props.match.params.id;
     const [data, setData] = useState([]);
     
+    // useEffect( () => {
+    //     console.log("In useEffect");
+    //     TransactionDataService.getAccountTransactions(account_id)
+    //     .then(response => {
+    //         setData(response.data);
+    //     })
+    //     .catch(e => console.log(e))
+    // }, [data]);
+
     useEffect( () => {
-        console.log("In useEffect");
-        TransactionDataService.getAccountTransactions(account_id)
-        .then(response => {
-            setData(response.data);
-        })
-        .catch(e => console.log(e))
-    }, [data]);
+        const doFetch = async () => {
+            const response = await fetch(`http://localhost:8080/api/transactions/${account_id}`);
+            const transactions = await response.json();
+            setData(transactions);
+        }
+        doFetch()
+    }, [])
 
 
     const columns = useMemo(
