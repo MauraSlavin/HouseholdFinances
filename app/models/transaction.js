@@ -1,5 +1,3 @@
-// const { values } = require("sequelize/types/lib/operators");
-
 module.exports = function(sequelize, DataTypes) {
     const Op = DataTypes.Op;
     var Transaction = sequelize.define("Transaction", {
@@ -7,15 +5,40 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.INTEGER,
             primaryKey: true
         },
-        account_id: DataTypes.INTEGER,
-        trans_date: DataTypes.DATEONLY,
-        post_date: DataTypes.DATEONLY,
-        verified: DataTypes.BOOLEAN,
-        amount: DataTypes.DECIMAL(8,2),
-        to_from: DataTypes.STRING,
-        description: DataTypes.STRING,
-        category: DataTypes.STRING,
-        stmt_date: DataTypes.DATEONLY
+        account_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        trans_date: {
+            type: DataTypes.DATEONLY,
+            allowNull: false
+        },
+        post_date: {
+            type: DataTypes.DATEONLY
+        },
+        verified: {
+            type: DataTypes.STRING,
+            defaultValue: ""
+        },
+        amount: {
+            type: DataTypes.DECIMAL(8,2),
+            allowNull: false
+        },
+        to_from: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        description: {
+            type: DataTypes.STRING,
+            defaultValue: ""
+        },
+        category: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        stmt_date: {
+            type: DataTypes.DATEONLY
+        }
     });
     
     Transaction.associate = function(models) {
@@ -25,10 +48,14 @@ module.exports = function(sequelize, DataTypes) {
         });
         
         Transaction.hasMany(models.Split, {
+            foreignKey: 'transaction_id',
+            sourceKey: 'id',
             onDelete: "cascade"
         });
         
         Transaction.hasMany(models.Bucket, {
+            foreignKey: 'transaction_id',
+            sourceKey: 'id',
             onDelete: "cascade"
         });
     };

@@ -3,8 +3,11 @@ App for managing household finances.  Track transactions, verify balances, see t
 
 # Completed functions:
 
-1. See total balance for each account.
-2. See a snapshot of all accounts
+1. See register balance for each account.
+2. See cleared balance for each account.
+3. See a snapshot of all accounts.
+4. See a list of transactions for each account, when the icon for that account is clicked on.
+5. ...including splits (from #4).
 
 # Planned functions:
 
@@ -15,17 +18,16 @@ App for managing household finances.  Track transactions, verify balances, see t
 4. Delete categories that have no transactions associated with them
 5. Split a transaction by multiple categories
 6. Note that a transaction has been verified against physical receipts
-7. Note that a transaction has cleared
+7. Note that a transaction has cleared (by entering the statement date)
 8. See an account by transaction date (to verify statement balances & transactions)
 9. Manually enter transactions
 10. Manually update transactions
-11. See cleared balance for each account.
-12. See income / spending for all accounts by category
-13. Allow for "buckets" in some accounts, where money is earmarked for specific purposes
+11. See income / spending for all accounts by category
+12. Allow for "buckets" in some accounts, where money is earmarked for specific purposes
     1. Ability to see buckets for the account
     2. Ability to move money from one bucket to another
     3. Ability to add, rename, delete buckets
-14. Ability to assign values by month for each category in the budget
+13. Ability to assign values by month for each category in the budget
 15. See year-to-date budget vs. actual by month
 16. Ability to order accounts on home page (click on icon and drag?), and save ordering
 
@@ -46,7 +48,7 @@ Required field is indicated by *.
 2. AccountID*: - ID of the account in the Accounts table
 3. TransDate*: datetime - date of the transaction initiated
 4. PostDate: datetime   - date the transaction posted/cleared; default NULL
-5. Verified: boolean - true if the transaction has been verified by receipts or other means, default FALSE
+5. Verified: string - "Yes" if the transaction has been verified by receipts or other means, default ""
 5. Amount*: float (2 decimal places) - amount of the transaction
 6. ToFrom*: string - where the transaction was going to or from
 7. Description: string - more information about the transaction; default NULL
@@ -58,7 +60,7 @@ Required field is indicated by *.
 2. TransactionID*: ID of transaction in Transactions table
 3. Amount*: float (2 decimal places) - amount of this portion of the transaction
 4. Category*: what category this portion of the transaction belongs to
-5. Description: string - notes on this portion of the transaction
+5. Description: string - notes on this portion of the transaction, default is ""
 
 NOTE: The total of the Amounts for all the entries of a given TransactionID should equal the corresponding Amount in the Transactions table.
 

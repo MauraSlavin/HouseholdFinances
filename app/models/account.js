@@ -4,9 +4,15 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.INTEGER,
             primaryKey: true
         },
-        nick_name: DataTypes.STRING,
+        nick_name: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
         purpose: DataTypes.STRING,
-        image: DataTypes.STRING
+        image: {
+            type: DataTypes.STRING,
+            defaultValue: 'DefaultAcctImage.png'
+        }
     });
 
     Account.associate = function(models) {

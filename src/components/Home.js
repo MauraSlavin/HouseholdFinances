@@ -40,8 +40,6 @@ export default class Home extends Component {
         AccountDataService.getAll()
         .then(response => {
             accounts = response.data
-            // console.log("accounts retrieved from table:")
-            // console.log(accounts);
         })
         .then(response => {
             TransactionDataService.getRegisterBalances()
@@ -59,8 +57,6 @@ export default class Home extends Component {
                     } else {
                         account.registerBalance = "0.00";
                     };
-                    console.log("Account:");
-                    console.log(account);
                 });
                 this.setState({
                     accounts: accounts

@@ -14,16 +14,16 @@ VALUES
 INSERT INTO transactions
     (id, account_id, trans_date, post_date, verified, amount, to_from, description, category, stmt_date)
 VALUES  
-    (1, 1, "2020-08-01", "2020-08-01", 1, 1000, "Beginning",     "Start",              "Transfer",  "2020-08-01"),
-    (2, 1, "2020-08-15", "2020-08-20", 0, -220, "Eversource",    "Electric bill",      "Utilities", "2020-08-01"),
-    (3, 1, "2020-09-01", NULL,         1, -150, "Market Basket", "Tot: $150",          "SPLIT",     "2020-09-01"),
-    (4, 1, "2020-09-01", "2020-09-21", 1,  -20, "SCU ATM",       "Household spending", "Transfer",  NULL),
-    (5, 2, "2020-08-01", "2020-08-01", 1, 5000, "Beginning",     "Start",              "Transfer",  "2020-08-01");
+    (1, 1, "2020-08-01", "2020-08-01", "Yes", 1000, "Beginning",     "Start",              "Transfer",  "2020-08-01"),
+    (2, 1, "2020-08-15", "2020-08-20", "",    -220, "Eversource",    "Electric bill",      "Utilities", "2020-08-01"),
+    (3, 1, "2020-09-01", NULL,         "Yes", -150, "Market Basket", "Wkly trip",          "SPLIT",     "2020-09-01"),
+    (4, 1, "2020-09-01", "2020-09-21", "Yes",  -20, "SCU ATM",       "Household spending", "Transfer",  NULL),
+    (5, 2, "2020-08-01", "2020-08-01", "Yes", 5000, "Beginning",     "Start",              "Transfer",  "2020-08-01");
 
 INSERT INTO splits
     (id, transaction_id, amount, category, description)
 VALUES 
-    (1, 3, -100, "Groceries",      NULL),
+    (1, 3, -100, "Groceries",      ""),
     (2, 3, -20,  "Kids",           "Cat food"),
     (3, 3, -15,  "Mike Spending",  "snacks"),
     (4, 3, -15,  "Maura Spending", "chocolate");

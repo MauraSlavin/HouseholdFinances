@@ -4,8 +4,14 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.INTEGER,
             primaryKey: true
         },
-        amount: DataTypes.DECIMAL(10,2),
-        bucket: DataTypes.STRING
+        amount: {
+            type: DataTypes.DECIMAL(10,2),
+            allowNull: false
+        },
+        bucket: {
+            type: DataTypes.STRING,
+            allowNull: false
+        }
     });
 
     return Bucket;

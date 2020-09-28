@@ -2,7 +2,7 @@ import React, { useState, useEffect, memo, useMemo } from "react";
 import { useTable } from "react-table";
 import { Container, Table } from "reactstrap";
 
-import TransactionDataService from "../services/transaction.service";
+// import TransactionDataService from "../services/transaction.service";
 
 // code modelled after thewidlarzgroup.com/react-table-7
 
@@ -13,8 +13,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const Transactions = memo(props => {
 
     const account_id = props.match.params.id;
-    const nick_name = props.match.params.nickName;
-
+    console.log("account_id:");
+    console.log(account_id);
     const [data, setData] = useState([]);
     
     // useEffect( () => {
@@ -27,12 +27,50 @@ const Transactions = memo(props => {
     // }, [data]);
 
     useEffect( () => {
-        const doFetch = async () => {
+        const doTransFetch = async () => {
+            var noSplits = true;
             const response = await fetch(`http://localhost:8080/api/transactions/${account_id}`);
-            const transactions = await response.json();
-            setData(transactions);
+            var transactions = await response.json();
+            const copyTransactions = [...transactions];
+            transactions = transactions.filter(function( transaction ) {
+                return transaction.category !== 'SPLIT';
+            });
+            console.log("transactions:");
+            console.log(transactions);
+            copyTransactions.forEach( (copyTransaction, index) => {
+                console.log("copyTransaction (just one):");
+                console.log(copyTransaction);
+                const doSplitFetch = async () => {
+                    if (copyTransaction.category === "SPLIT") {
+                        noSplits = false;
+                        const splitResponse = await fetch(`http://localhost:8080/api/splits/${copyTransaction.id}`);
+                        const splits = await splitResponse.json();
+                        var newSplit = {};
+                        splits.forEach(split => {
+                            newSplit = {
+                                id: copyTransaction.id,
+                                account_id: split.id,
+                                trans_date: copyTransaction.trans_date,
+                                post_date: copyTransaction.post_date,
+                                verified: copyTransaction.verified,
+                                amount: split.amount,
+                                to_from: copyTransaction.to_from,
+                                description: `SPLIT -- Tot: $${copyTransaction.amount};  ${copyTransaction.description}; ${split.description}`,
+                                category: split.category,
+                                stmt_date: copyTransaction.stmt_date
+                            }; // end newSplit object
+                            transactions.push(newSplit);
+                            console.log("transactions (after split):");
+                            console.log(transactions);
+                        });  // end of splits.forEach
+                        setData(transactions);
+                    }; // end of if category = SPLIT
+                }  // asynch doSplitFetch
+                doSplitFetch();
+            });  // transactions.forEach
+            if (noSplits) setData(transactions);
         }
-        doFetch()
+        doTransFetch()
     }, [])
 
 
@@ -47,16 +85,12 @@ const Transactions = memo(props => {
                 accessor: 'post_date',
             },
             {
-                Header: 'Amount',
-                accessor: 'amount',
-            },
-            {
-                Header: 'Verified?',
-                accessor: 'verified',
-            },
-            {
                 Header: 'To or from',
                 accessor: 'to_from',
+            },
+            {
+                Header: 'Amount',
+                accessor: 'amount',
             },
             {
                 Header: 'Description',
@@ -65,6 +99,10 @@ const Transactions = memo(props => {
             {
                 Header: 'Category',
                 accessor: 'category',
+            },
+            {
+                Header: 'Verified?',
+                accessor: 'verified',
             },
             {
                 Header: 'Statement date',

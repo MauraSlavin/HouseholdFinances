@@ -19,7 +19,7 @@ CREATE TABLE transactions (
   CONSTRAINT fk_account FOREIGN KEY (account_id) REFERENCES accounts(id) ON DELETE CASCADE,
   trans_date DATE NOT NULL,
   post_date DATE,
-  verified BOOLEAN default FALSE,
+  verified VARCHAR(3) default "",
   amount DECIMAL(8,2) NOT NULL,
   to_from VARCHAR(30) NOT NULL,
   description VARCHAR(100),
@@ -36,7 +36,7 @@ CREATE TABLE splits (
     CONSTRAINT fk1_transaction FOREIGN KEY (transaction_id) REFERENCES transactions(id) ON DELETE CASCADE,
     amount DECIMAL(8,2) NOT NULL,
     category VARCHAR(30) NOT NULL,
-    description VARCHAR(100),
+    description VARCHAR(100) DEFAULT "",
     createdAt TIMESTAMP DEFAULT current_timestamp(),
 	updatedAt TIMESTAMP DEFAULT current_timestamp()
 );
@@ -86,16 +86,16 @@ VALUES
 INSERT INTO transactions
     (id, account_id, trans_date, post_date, verified, amount, to_from, description, category, stmt_date)
 VALUES  
-    (1, 1, "2020-08-01", "2020-08-01", 1, 1000, "Beginning",     "Start",              "Transfer",  "2020-08-01"),
-    (2, 1, "2020-08-15", "2020-08-20", 0, -220, "Eversource",    "Electric bill",      "Utilities", "2020-08-01"),
-    (3, 1, "2020-09-01", NULL,         1, -150, "Market Basket", "Tot: $150",          "SPLIT",     "2020-09-01"),
-    (4, 1, "2020-09-01", "2020-09-21", 1,  -20, "SCU ATM",       "Household spending", "Transfer",  NULL),
-    (5, 2, "2020-08-01", "2020-08-01", 1, 5000, "Beginning",     "Start",              "Transfer",  "2020-08-01");
+    (1, 1, "2020-08-01", "2020-08-01", "Yes", 1000, "Beginning",     "Start",              "Transfer",  "2020-08-01"),
+    (2, 1, "2020-08-15", "2020-08-20", "",    -220, "Eversource",    "Electric bill",      "Utilities", "2020-08-01"),
+    (3, 1, "2020-09-01", NULL,         "Yes", -150, "Market Basket", "Wlky trip",          "SPLIT",     "2020-09-01"),
+    (4, 1, "2020-09-01", "2020-09-21", "Yes",  -20, "SCU ATM",       "Household spending", "Transfer",  NULL),
+    (5, 2, "2020-08-01", "2020-08-01", "Yes", 5000, "Beginning",     "Start",              "Transfer",  "2020-08-01");
 
 INSERT INTO splits
     (id, transaction_id, amount, category, description)
 VALUES 
-    (1, 3, -100, "Groceries",      NULL),
+    (1, 3, -100, "Groceries",      ""),
     (2, 3, -20,  "Kids",           "Cat food"),
     (3, 3, -15,  "Mike Spending",  "snacks"),
     (4, 3, -15,  "Maura Spending", "chocolate");
@@ -115,7 +115,6 @@ VALUES
     (3, "2020-08-01", "Utilities",      100, 100,  80,  70,  60,  60,  60,  60,  60,  70,  80, 100),
     (4, "2020-08-01", "Mike Spending",  250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250),
     (5, "2020-08-01", "Maura Spending", 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250);
-
 
 
 SELECT * FROM accounts;

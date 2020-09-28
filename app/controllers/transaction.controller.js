@@ -32,13 +32,11 @@ exports.getAccountTransactions = (req, res) => {
     
     Transaction.getAccountTransactions(id)
     .then(data => {
-        // console.log("data:");
-        // console.log(data);
         res.send(data);
     })
     .catch(err => {
         res.status(500).send({
-            message: err.message || `Error occureed retrieving transactions for account with id of ${id}.`
+            message: err.message || `Error occurred retrieving transactions for account with id of ${id}.`
         });
     });
 }
