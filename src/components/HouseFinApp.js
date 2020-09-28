@@ -4,6 +4,7 @@ import Home from "./Home";
 import Assets from "./Assets";
 import Spending from "./Spending";
 import Budget from "./Budget";
+import Upload from "./Upload";
 import Transactions from "./Transactions";
 
 
@@ -34,6 +35,7 @@ class HouseFinApp extends Component {
                         <Route exact path="/budget" component={Budget} />
                         <Route exact path="/assets" component={Assets} />
                         <Route exact path="/spending" component={Spending} />
+                        <Route exact path="/upload" component={Upload} />
                         <Route exact path="/account/transactions/:id" component={Transactions} />
                     </div>
 

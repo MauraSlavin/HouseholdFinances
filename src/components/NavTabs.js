@@ -33,6 +33,13 @@ function NavTabs() {
                     ><strong>Budget</strong></Link>
                 </li>
 
+                <li className = "nav-item m-1">
+                    <Link
+                        to="/upload"
+                        className="nav-link"
+                    ><strong>Upload</strong></Link>
+                </li>
+
             </ul>
         </div>
     )
