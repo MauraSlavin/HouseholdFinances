@@ -10,7 +10,9 @@ export default function Upload() {
       var filename = "(None chosen)";
       var fileextension = '';
 
-      if (event.target.files !== undefined) {
+      console.log("event.target.files:");
+      console.log(event.target.files);
+      if (event.target.files !== undefined && event.target.files.length > 0) {
           filename = event.target.files[0].name;
           fileextension = filename.split('.').pop();
       };
