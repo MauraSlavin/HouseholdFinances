@@ -13,8 +13,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const Transactions = memo(props => {
 
     const account_id = props.match.params.id;
-    console.log("account_id:");
-    console.log(account_id);
     const [data, setData] = useState([]);
     
     // useEffect( () => {
@@ -35,11 +33,7 @@ const Transactions = memo(props => {
             transactions = transactions.filter(function( transaction ) {
                 return transaction.category !== 'SPLIT';
             });
-            console.log("transactions:");
-            console.log(transactions);
             copyTransactions.forEach( (copyTransaction, index) => {
-                console.log("copyTransaction (just one):");
-                console.log(copyTransaction);
                 const doSplitFetch = async () => {
                     if (copyTransaction.category === "SPLIT") {
                         noSplits = false;
@@ -60,8 +54,6 @@ const Transactions = memo(props => {
                                 stmt_date: copyTransaction.stmt_date
                             }; // end newSplit object
                             transactions.push(newSplit);
-                            console.log("transactions (after split):");
-                            console.log(transactions);
                         });  // end of splits.forEach
                         setData(transactions);
                     }; // end of if category = SPLIT

@@ -1,66 +1,92 @@
 import React, { useState } from 'react';
 import Papa  from 'papaparse';
+import TransactionDataService from "../services/transaction.service";
 
-export default function Upload() {
+export default function Upload(props) {
   const [csvfile, setCsvFile] = useState(undefined);
   const [showUploadButton, setShowUploadButton] = useState();
   const [message, setMessage] = useState("");
-
+  const account_id = props.match.params.id;
+  
   function handleFileChange(event) {
       var filename = "(None chosen)";
       var fileextension = '';
-
-      console.log("event.target.files:");
-      console.log(event.target.files);
+      
       if (event.target.files !== undefined && event.target.files.length > 0) {
           filename = event.target.files[0].name;
           fileextension = filename.split('.').pop();
       };
-
+      
       if (fileextension !== 'csv') {
           alert("Must be a CSV file.  " + filename + " is not.");
           setCsvFile(undefined);
           setShowUploadButton(false);
           setMessage("Must be a CSV file.  " + filename + " is not.  Please choose another file.");
-      } else {
-          setCsvFile(event.target.files[0]);
-          setShowUploadButton(true);
+        } else {
+            setCsvFile(event.target.files[0]);
+            setShowUploadButton(true);
           setMessage("");
       };
-  };
+    };
 
-  function importCSV() {
-      var results = Papa.parse(csvfile, {
-          complete: updateData,
-          header: true
-      });
-  };
+    function importCSV() {
+        var results = Papa.parse(csvfile, {
+            complete: updateData,
+            header: true
+        });
+    };
+    
+    function updateData(result) {
+        // go through array in reverse order, so index in result.errors is correct.
+        // remove invalid transaction records
+        for (var i = result.errors.length-1; i >= 0; i--) {
+            result.data.splice(result.errors[i].row, 1);
+        };
+        
+        const transForDB = result.data.filter(trans => trans.Amount !== "");
 
-  function updateData(result) {
-      // go through array in reverse order, so index in result.errors is correct.
-      // remove invalid transaction records
-      for (var i = result.errors.length-1; i >= 0; i--) {
-          result.data.splice(result.errors[i].row, 1);
-      };
+        var stmt_date;
+        var formatForDB = [];
+        
+        transForDB.forEach(trans => {
 
-      const transForDB = result.data.filter(trans => trans.Amount !== "");
-      console.log("transForDB:");
-      console.log(transForDB);
+            stmt_date = new Date(trans["Stmt Date"]);
 
-      // LEFT OFF HERE
-      // To do - 
-      //     -- ask what account these are for
-      //     -- write files to database
-      //     -- Set message (in state, using setMessage() ) to number of records uploaded and written to DB.
+            var DBtrans = {
+                account_id: account_id,
+                trans_date: new Date(trans.Date),
+                post_date: (trans.Date != "") ? new Date(trans.Date) : null,
+                verified: (trans["Stmt Date"] != null) ? "Yes" : "",
+                amount: (trans["Transaction Type"] == 'debit') ? 0-trans.Amount : trans.Amount,
+                to_from: trans.Description,
+                description: trans.Notes,
+                category: trans.Category,
+                stmt_date: new Date(stmt_date.getFullYear(), stmt_date.getMonth(), 1),
+            }
+            formatForDB.push(DBtrans);
+        });
+
+        TransactionDataService.postTransactions(formatForDB)
+        .then(response => {
+            setMessage(`${formatForDB.length} transactions uploaded to the database.`);
+        })
+        .catch(e => {
+            console.log(e);
+        });
   };
 
   return (
     <div>
       <h1 className="text-center">
-          So far, this just uploads the file and console.logs the data.
+          Upload transactions
       </h1>
-      <h3 className = "text-center">Import CSV File!!</h3>
-            <p className="text-danger bg-warning text-center"><strong>{message}</strong></p>
+      <h3 className = "text-center">Click "Choose file" to choose a CSV file to upload transactions from.  
+        After a CSV file has been chosen, an 'Upload files' button will appear to allow you to upload transactions.</h3>
+      <br />
+      <br />
+      <p className="text-danger bg-warning text-center"><strong>{message}</strong></p>
+      <div className="row">
+          <div className="col-2 offset-4">
             <input
                 className="csv-input ml-5"
                 type="file"
@@ -73,6 +99,8 @@ export default function Upload() {
                 <button className="m-5" onClick={importCSV}>Upload transactions</button>
                 : null
             }
+          </div>
+      </div>
     </div>
   );
 }

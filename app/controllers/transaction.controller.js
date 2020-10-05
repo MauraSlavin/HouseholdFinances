@@ -28,7 +28,7 @@ exports.getClearedBalances = (req, res) => {
 
 exports.getAccountTransactions = (req, res) => {
     const id = req.params.id;
-    console.log("In transaction.controller.js - getAccountTransactions");
+    console.log(" --- In transaction.controller.js - getAccountTransactions --- ");
     
     Transaction.getAccountTransactions(id)
     .then(data => {
@@ -39,4 +39,18 @@ exports.getAccountTransactions = (req, res) => {
             message: err.message || `Error occurred retrieving transactions for account with id of ${id}.`
         });
     });
-}
+};
+
+exports.postTransactions = (req, res) => {
+    console.log(" --- In transaction.controller.js - postAccountTransactions --- ");
+
+    Transaction.postTransactions(req.body)
+    .then(data => {
+        res.send(data);
+    })
+    .catch(err => {
+        res.status(500).send({
+            message: err.message || "Error occurred writing uploaded transactions to Transactions table."
+        });
+    });
+};

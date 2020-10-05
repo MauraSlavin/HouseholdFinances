@@ -30,7 +30,7 @@ module.exports = function(sequelize, DataTypes) {
     };
     
     Split.getSplits = function(id, models) {
-        console.log("In splits.js (of models) - getSplits");
+        console.log(" --- In splits.js (of models) - getSplits --- ");
         return this.findAll({
             where: {
                 transaction_id: id

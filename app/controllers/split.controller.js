@@ -4,12 +4,9 @@ const Split = db.splits;
 
 exports.getSplits = (req, res) => {
     const id = req.params.id;
-    console.log("In split.controller.js - getSplits");
     
     Split.getSplits(id)
     .then(data => {
-        console.log("data:");
-        console.log(data);
         res.send(data);
     })
     .catch(err => {

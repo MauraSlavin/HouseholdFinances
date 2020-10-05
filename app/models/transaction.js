@@ -70,7 +70,6 @@ module.exports = function(sequelize, DataTypes) {
     };
 
     Transaction.getClearedBalances = function(models) {
-        // const { values } = require("sequelize");
         return this.findAll({
             attributes:  [ 'account_id', [sequelize.fn('sum', sequelize.col('amount')), 'balance']],
             group: ['account_id'],
@@ -84,7 +83,7 @@ module.exports = function(sequelize, DataTypes) {
     };
 
     Transaction.getAccountTransactions = function(id, models) {
-        console.log("In transaction.js (of models) - getAccountTransactions");
+        console.log(" --- In transaction.js (of models) - getAccountTransactions --- ");
         return this.findAll({
             where: {
                 account_id: id
@@ -92,5 +91,10 @@ module.exports = function(sequelize, DataTypes) {
         });
     };
 
+    Transaction.postTransactions = function(trans, models) {
+        console.log("--- In transaction.js (of models) - postTransactions --- ");
+        return this.bulkCreate(trans);
+    };
+    
     return Transaction;
 };

@@ -1,9 +1,8 @@
 import http from "../http-common";
-import Home from "../components/Home";
+// import Home from "../components/Home";
 
 class TransactionDataService {
     getAll() {
-    // findAll() {
         return http.get("/transactions");
     };
 
@@ -19,6 +18,10 @@ class TransactionDataService {
         return http.get(`/transactions/${id}`);
     };
 
+    postTransactions(trans) {
+        console.log("--- in transaction.service.js (postTransactions) ---");
+        return http.post("/transactions/upload", trans);
+    };
 }
 
 export default new TransactionDataService();
