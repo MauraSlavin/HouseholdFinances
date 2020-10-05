@@ -4,7 +4,7 @@ import LinkButton from './LinkButton';
 
 import "./account.css";
 
-// import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Button from 'react-bootstrap/Button';
 
@@ -15,13 +15,26 @@ export default function Account(props) {
 
             <div className="account">
                 <div className="row">
-                    <h4><u>{props.nickName}</u></h4>
-                    <div><span className="small">{props.purpose}</span></div>
+                    <div className="col-8 p-0">
+                        <LinkButton className="acct-name-btn p-0" to={"account/transactions/" + props.account_id}>
+                            <h5><u>{props.nickName}</u></h5>
+                        </LinkButton>
+                    </div>
+                    <div className="col-4 text-right pl-0">
+                        <LinkButton className="upload-btn" to={"account/transactions/upload/" + props.account_id}>
+                            Upload
+                        </LinkButton>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-12">
+                        <span className="small">{props.purpose}</span>
+                    </div>
                 </div>
 
                 <div className="row">
-                    <LinkButton className="acct-btn" to={"account/transactions/" + props.account_id}>
-                        <img className="acct-icon" src={props.image} alt={props.alt} />
+                    <LinkButton className="acct-icon-btn" to={"account/transactions/" + props.account_id}>
+                        <img className="acct-icon mt-2" src={props.image} alt={props.alt} />
                     </LinkButton>
 
 

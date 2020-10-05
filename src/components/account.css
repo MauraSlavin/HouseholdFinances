@@ -3,7 +3,7 @@
     margin-right: 20px;
     margin-bottom: 30px;
     width: 300px;
-}
+  }
 
 h4 {
   width: 100%;
@@ -17,14 +17,32 @@ h4 {
   border-radius: 50%;
 }
 
-.acct-btn {
-  background-color: transparent !important;
-  border-color: transparent !important;
+.upload-btn {
+  background-color: lightblue;
+  border-color: blue;
+  border-width: 1px;
+  border-radius: 25%;
+  color: blue;
+  font-size: 12px;
 }
 
-.acct-btn:hover {
+.acct-name-btn, .acct-icon-btn {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  text-align: left;
+}
+
+.acct-icon-btn:hover {
   animation: icon-spin infinite 5s linear;
   position: center;
+}
+
+.acct-name-btn:hover {
+  color: aqua;
+}
+
+.upload-btn:hover {
+  background-color: yellow;
 }
 
 .small {
