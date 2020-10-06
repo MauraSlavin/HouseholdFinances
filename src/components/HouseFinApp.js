@@ -7,8 +7,12 @@ import Budget from "./Budget";
 import Upload from "./Upload";
 import Transactions from "./Transactions";
 
+import './account.css';
+
 
 import { BrowserRouter as Router, Route  } from "react-router-dom";
+
+const icon = require('./images/icon.png');
 
 class HouseFinApp extends Component {
     state = {
@@ -24,7 +28,10 @@ class HouseFinApp extends Component {
         return (
             <Router>
                 <div className="row">
-                    <div className="col-12 text-center text-success">
+                    <div className="col-3 offset-1 app-icon">
+                        <img src={icon} alt={''} />
+                    </div>
+                    <div className="col-4 text-center text-success">
                         <h1>Household Finances</h1>
                     </div>
             
