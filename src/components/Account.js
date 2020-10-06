@@ -7,8 +7,11 @@ import "./account.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Button from 'react-bootstrap/Button';
+console.log("--- In Account.js ---");
 
 export default function Account(props) {
+    console.log("props:");
+    console.log(props);
     return (    
 
         <div className="border-bottom border-dark mt-2">
@@ -16,12 +19,12 @@ export default function Account(props) {
             <div className="account">
                 <div className="row">
                     <div className="col-8 p-0">
-                        <LinkButton className="acct-name-btn p-0" to={"account/transactions/" + props.account_id}>
+                        <LinkButton className="acct-name-btn p-0" to={`account/transactions/${props.account_id}/${props.nickName}`}>
                             <h5><u>{props.nickName}</u></h5>
                         </LinkButton>
                     </div>
                     <div className="col-4 text-right pl-0">
-                        <LinkButton className="upload-btn" to={"account/transactions/upload/" + props.account_id}>
+                        <LinkButton className="upload-btn" to={`account/transactions/upload/${props.account_id}/${props.nickName}`}>
                             Upload
                         </LinkButton>
                     </div>
@@ -33,7 +36,7 @@ export default function Account(props) {
                 </div>
 
                 <div className="row">
-                    <LinkButton className="acct-icon-btn" to={"account/transactions/" + props.account_id}>
+                    <LinkButton className="acct-icon-btn" to={`account/transactions/${props.account_id}/${props.nickName}`}>
                         <img className="acct-icon mt-2" src={props.image} alt={props.alt} />
                     </LinkButton>
 
@@ -44,15 +47,12 @@ export default function Account(props) {
                                 <br></br>
                                 Register:
                                 Cleared:
-                                ID:
                             </div>
                             <div className="col-7 right mx-0">
                                 <br></br>
                                 <strong>$ {props.registerBalance}</strong>
                                 <br></br>
                                 <strong>$ {props.clearedBalance}</strong>
-                                <br></br>
-                                <strong>{props.account_id}</strong>
                             </div>
                         </div>
                     </div>

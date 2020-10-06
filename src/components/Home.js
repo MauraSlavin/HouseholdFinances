@@ -18,16 +18,18 @@ const acctIcons = [
     require('./images/DefaultAcctImage.png')
 ];
 
+console.log("--- In Home.js ---");
+
 export default class Home extends Component {
     constructor(props) {
         super();
         this.retrieveAccountInfo = this.retrieveAccountInfo.bind(this);
-
+        
         this.state = {
             accounts: []
         };
     }
-
+    
     componentDidMount() {
         this.retrieveAccountInfo();
     }
@@ -40,6 +42,8 @@ export default class Home extends Component {
         AccountDataService.getAll()
         .then(response => {
             accounts = response.data
+            console.log("accounts:");
+            console.log(accounts);
         })
         .then(response => {
             TransactionDataService.getRegisterBalances()

@@ -20,9 +20,9 @@ class HouseFinApp extends Component {
     }
 
 
-    handlePageChange = page => {
-        this.setState({ currentPage: page });
-    };
+    // handlePageChange = page => {
+    //     this.setState({ currentPage: page });
+    // };
 
     render() {
         return (
@@ -42,8 +42,8 @@ class HouseFinApp extends Component {
                         <Route exact path="/budget" component={Budget} />
                         <Route exact path="/assets" component={Assets} />
                         <Route exact path="/spending" component={Spending} />
-                        <Route exact path="/account/transactions/upload/:id" component={Upload} />
-                        <Route exact path="/account/transactions/:id" component={Transactions} />
+                        <Route exact path="/account/transactions/upload/:id/:nick_name" component={Upload} />
+                        <Route exact path="/account/transactions/:id/:nick_name" component={Transactions} />
                     </div>
 
                 </div>

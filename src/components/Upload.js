@@ -7,6 +7,7 @@ export default function Upload(props) {
   const [showUploadButton, setShowUploadButton] = useState();
   const [message, setMessage] = useState("");
   const account_id = props.match.params.id;
+  const nick_name = props.match.params.nick_name;
   
   function handleFileChange(event) {
       var filename = "(None chosen)";
@@ -78,7 +79,7 @@ export default function Upload(props) {
   return (
     <div>
       <h1 className="text-center">
-          Upload transactions
+          Upload transactions for <u>{`${nick_name}`}</u>
       </h1>
       <h3 className = "text-center">Click "Choose file" to choose a CSV file to upload transactions from.  
         After a CSV file has been chosen, an 'Upload files' button will appear to allow you to upload transactions.</h3>

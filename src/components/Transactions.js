@@ -13,6 +13,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const Transactions = memo(props => {
 
     const account_id = props.match.params.id;
+    const nick_name = props.match.params.nick_name;
+    console.log("account_id: " + account_id + ";  nick_name: " + nick_name);
+
     const [data, setData] = useState([]);
     
     // useEffect( () => {
@@ -116,7 +119,7 @@ const Transactions = memo(props => {
         <div className="border-bottom mt-2">
             <h1 className="text-center">Account Transactions</h1>
             <div>
-                <p className="text-center">For account#: {account_id}</p>
+                <h3 className="text-center">{nick_name}</h3>
                 <Container style={{ martinTop: 100 }}>
                     {/* <table {...getTableProps()}> */}
                     <Table bordered hover {...getTableProps()}>
