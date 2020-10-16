@@ -42,8 +42,6 @@ export default class Home extends Component {
         AccountDataService.getAll()
         .then(response => {
             accounts = response.data
-            console.log("accounts:");
-            console.log(accounts);
         })
         .then(response => {
             TransactionDataService.getRegisterBalances()

@@ -14,8 +14,6 @@ const Transactions = memo(props => {
 
     const account_id = props.match.params.id;
     const nick_name = props.match.params.nick_name;
-    console.log("account_id: " + account_id + ";  nick_name: " + nick_name);
-
     const [data, setData] = useState([]);
     
     // useEffect( () => {

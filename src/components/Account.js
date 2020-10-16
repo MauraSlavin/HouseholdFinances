@@ -10,8 +10,6 @@ import Button from 'react-bootstrap/Button';
 console.log("--- In Account.js ---");
 
 export default function Account(props) {
-    console.log("props:");
-    console.log(props);
     return (    
 
         <div className="border-bottom border-dark mt-2">

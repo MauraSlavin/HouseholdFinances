@@ -1,0 +1,6 @@
+Date,Description,Original Description,Amount,Transaction Type,Category,Account Name,Stmt Date,Car,Notes
+1/1/2020,beginning balance,Cash: beginning balance,60,credit,MikeSpending,Cash,1/1/2020,,from 2019
+1/1/2020,beginning balance,Cash: beginning balance,85.68,credit,Transfer,Cash,1/1/2020,,from 2019
+1/8/2020,Hannaford,,3.99,debit,Groceries,Cash,1/1/2020,,choc milk
+1/18/2020,Maura,,30,debit,MauraSpending,Cash,,,spending
+1/18/2020,Mike,,30,debit,MikeSpending,Cash,,,spending

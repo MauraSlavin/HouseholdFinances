@@ -1,32 +1,7 @@
-.mapping {
-    height: 50px;
-    /* position: relative; */
-    /* display: flex; */
-    flex-wrap: wrap;
-    justify-content: space-between;
-    width: auto;
-
+.map-height {
+    height: 36px;
 }
 
-.map-block {
-    /* .work { */
-    /* to get text on top of picture */
-    display: flex;
-    position: relative;
-    float: left;
-    width: 254px;
-    /* margin: 20px 0 25px;
-    overflow: hidden; */
-
-
+.file-col-hdr {
+    height: 32px;
 }
-
-.left-txt {
-    width: 90px;
-}
-
-.clearfix::after {
-    content: " ";
-    display: block;
-    clear: both;
-  }
