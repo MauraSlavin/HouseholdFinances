@@ -8,17 +8,17 @@ App for managing household finances.  Track transactions, verify balances, see t
 3. See a snapshot of all accounts.
 4. See a list of transactions for each account, when the icon for that account is clicked on.
 5. ...including splits (from #4).
+6. Upload transactions from a CSV file, using mapping defined by user.
 
 # Planned functions:
 
-1. Import transactions from an Excel file to the database for multiple accounts
-    1. Checking for duplicates (prompting to eliminate duplicates or to keep)
+1. Checking for duplicates when uploading transactions from CSV file (prompting to eliminate duplicates or to keep)
 2. Track transactions by Category
 3. Add and rename categories
 4. Delete categories that have no transactions associated with them
 5. Split a transaction by multiple categories
-6. Note that a transaction has been verified against physical receipts
-7. Note that a transaction has cleared (by entering the statement date)
+6. Note that a transaction has been verified against physical receipts (can see this, but can't modify it, yet)
+7. Note that a transaction has cleared (by entering the statement date) (is displayed, but can't be modified, yet)
 8. See an account by transaction date (to verify statement balances & transactions)
 9. Manually enter transactions
 10. Manually update transactions
@@ -30,6 +30,8 @@ App for managing household finances.  Track transactions, verify balances, see t
 13. Ability to assign values by month for each category in the budget
 15. See year-to-date budget vs. actual by month
 16. Ability to order accounts on home page (click on icon and drag?), and save ordering
+17. Track spending
+18. For joint owners, see who owns how much of the given account
 
 
 # SQL database
