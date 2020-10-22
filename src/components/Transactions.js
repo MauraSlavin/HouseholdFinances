@@ -1,6 +1,9 @@
 import React, { useState, useEffect, memo, useMemo } from "react";
 import { useTable } from "react-table";
 import { Container, Table } from "reactstrap";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEdit, faSave, faTrash } from  '@fortawesome/free-solid-svg-icons';
+import splitIcon from './images/splitIcon.png';
 
 // import TransactionDataService from "../services/transaction.service";
 
@@ -10,21 +13,17 @@ import "./account.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import Button from 'react-bootstrap/Button';
 
+const editIconElement = <FontAwesomeIcon icon={faEdit} />;
+const saveIconElement = <FontAwesomeIcon icon={faSave} />;
+const deleteIconElement = <FontAwesomeIcon icon={faTrash} />;
+const splitIconElement = <img src={splitIcon} alt='split'></img>;
+
 const Transactions = memo(props => {
 
     const account_id = props.match.params.id;
     const nick_name = props.match.params.nick_name;
     const [data, setData] = useState([]);
     
-    // useEffect( () => {
-    //     console.log("In useEffect");
-    //     TransactionDataService.getAccountTransactions(account_id)
-    //     .then(response => {
-    //         setData(response.data);
-    //     })
-    //     .catch(e => console.log(e))
-    // }, [data]);
-
     useEffect( () => {
         const doTransFetch = async () => {
             var noSplits = true;
@@ -94,16 +93,58 @@ const Transactions = memo(props => {
                 accessor: 'category',
             },
             {
-                Header: 'Verified?',
-                accessor: 'verified',
-            },
-            {
                 Header: 'Statement date',
                 accessor: 'stmt_date',
             },
-    ],
-    []
-)
+            {
+                Header: 'Edit',
+                accessor: 'edit',
+                Cell: ({cell}) => (
+                    <button value={cell.row.values.name} onClick={props.handleClickEdit}>
+                        {/* {cell.row.values.edit} */}
+                        {editIconElement}
+                    </button>
+                )
+            },
+            {
+                Header: 'Save',
+                accessor: 'save',
+                Cell: ({cell}) => (
+                    <button value={cell.row.values.name} onClick={props.handleClickSave}>
+                        {/* {cell.row.values.edit} */}
+                        {saveIconElement}
+                    </button>
+                )
+            },
+            {
+                Header: 'Delete',
+                accessor: 'delete',
+                Cell: ({cell}) => (
+                    <button value={cell.row.values.name} onClick={props.handleClickDelete}>
+                        {/* {cell.row.values.edit} */}
+                        {deleteIconElement}
+                    </button>
+                )
+            },
+            {
+                Header: 'Split',
+                accessor: 'split',
+                Cell: ({cell}) => (
+                    <button value={cell.row.values.name} onClick={props.handleClickSplit}>
+                        {/* {cell.row.values.edit} */}
+                        {splitIconElement}
+                    </button>
+                )
+            },
+            {
+                Header: 'Verified?',
+                accessor: 'verified',
+            },
+        ],
+        []
+    )
+
+
 
     const {
         getTableProps,
